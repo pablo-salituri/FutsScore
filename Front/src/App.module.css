@@ -1,0 +1,22 @@
+/* @media (min-width: 1025px) {
+
+}
+  
+@media (min-width: 769px) and (max-width: 1024px) {
+
+} */
+
+@media (max-width: 768px) {
+    .mainContainer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+    
+    .body {
+        background-color: aqua;
+        display: flex;
+        height: 75%;
+    }
+}
