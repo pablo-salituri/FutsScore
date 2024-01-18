@@ -9,6 +9,12 @@
 @media (max-width: 768px) {
     .homeContainer {
         background-color: silver;
-        width: 70%;
+        height: 85%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 5vh;
+        padding: 3vh 0;
+        overflow: auto;
     }
 }

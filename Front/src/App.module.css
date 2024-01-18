@@ -17,6 +17,7 @@
     .body {
         background-color: aqua;
         display: flex;
-        height: 75%;
+        flex-direction: column;
+        height: 78%;
     }
 }

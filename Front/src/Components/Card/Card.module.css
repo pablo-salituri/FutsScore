@@ -1,0 +1,32 @@
+/* @media (min-width: 1025px) {
+
+}
+  
+@media (min-width: 769px) and (max-width: 1024px) {
+
+} */
+
+@media (max-width: 768px) {
+    .cardContainer {
+        background-color: yellowgreen;
+        display: flex;
+        flex-direction: column;
+        width: 70vw;
+        height: 70vw;
+    }
+
+    .image {
+        background-color: brown;
+        height: 70%;
+    }
+
+    .price {
+        background-color: beige;
+        height: 10%;
+    }
+
+    .description {
+        background-color: aquamarine;
+        height: 20%;
+    }
+}
