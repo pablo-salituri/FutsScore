@@ -1,10 +1,16 @@
-/* @media (min-width: 1025px) {
-
+@media (min-width: 1025px) {
+    .sideBarContainer {
+        background-color: pink;
+        width: 20%;
+    }
 }
   
 @media (min-width: 769px) and (max-width: 1024px) {
-
-} */
+    .sideBarContainer {
+        background-color: pink;
+        height: 15%;
+    }
+} 
 
 @media (max-width: 768px) {
     .sideBarContainer {
