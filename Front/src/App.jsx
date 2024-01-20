@@ -1,18 +1,36 @@
-import NavBar from "./Components/NavBar/NavBar";
-import SideBar from "./Components/SideBar/SideBar";
-import Home from "./Components/Home/Home";
-import Footer from "./Components/Footer/Footer";
-import styles from "./App.module.css";
+import { Routes, Route /* , useLocation */ } from "react-router-dom";
+import MainPage from "./Components/MainPage/MainPage";
+// import "./App.css";
 
-export default function App() {
+function App() {
+  // const location = useLocation();
+
   return (
-    <div className={styles.mainContainer}>
-      <NavBar />
-      <section className={styles.body}>
-        <SideBar />
-        <Home />
-      </section>
-      <Footer />
+    <div>
+      {/* {!location.pathname.includes('/admin') && (
+      <div className='superiorContainer'>
+        <NavSuperior />
+        <Nav />
+      </div>
+    )} */}
+
+      {/* <div className='generalContainer'> */}
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        {/* <Route path="/properties/:id" element={<Detail />} /> */}
+
+        {/* <Route path="*" element={<UnknownRoute />} /> */}
+
+        {/* <Route element={<ProtectedRoutes allowedRoles={["admin", 'editor']} />}>
+          <Route path="/admin" element={<HomeDash />} />
+          <Route path="/admin/editarPropiedad/:id" element={<EditPropertyForm />} />
+          <Route path="/admin/crearPropiedad" element={<CreateForm/>} />
+          <Route path="/admin/datosPersonales" element={<PersonalData/>} />
+        </Route> */}
+      </Routes>
+      {/* </div> */}
+      {/* {!location.pathname.includes('/admin') && <Footer />} */}
     </div>
   );
 }
+export default App;
