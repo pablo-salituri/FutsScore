@@ -8,9 +8,28 @@
 @media (min-width: 769px) and (max-width: 1024px) {
     .sideBarContainer {
         background-color: pink;
-        height: 15%;
+        height: 10%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .iconContainer {
+        background-color: #17dd94;
+        height: 70%;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon {
+        width: 70%;
+        height: 70%;
     }
 } 
+
 
 @media (max-width: 768px) {
     .sideBarContainer {
