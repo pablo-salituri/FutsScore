@@ -1,20 +1,41 @@
+.navBarContainer {
+    background-color: #6d82cb
+}
+
 @media (min-width: 1025px) {
     .navBarContainer {
-        background-color: red;
         height: 12%;
     }
 }
   
 @media (min-width: 769px) and (max-width: 1024px) {
     .navBarContainer {
-        background-color: red;
         height: 12%;
     }
 } 
 
+
 @media (max-width: 768px) {
     .navBarContainer {
-        background-color: red;
         height: 12%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .img {
+        height: 85%;
+    }
+
+    .title {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 2.5em;
+        color: white;
+    }
+
+    .button {
+        background-color: #17dd94;
+        width: 10vh;
     }
 }
