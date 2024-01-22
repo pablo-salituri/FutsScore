@@ -10,19 +10,19 @@ export default function SideBar() {
             <tr>
               <td>Fútbol 11</td>
               <td>
-                <input type="checkbox" />
+                <input type="checkbox" checked={true} />
               </td>
             </tr>
             <tr>
               <td>Fútbol 5</td>
               <td>
-                <input type="checkbox" />
+                <input type="checkbox" checked={true} />
               </td>
             </tr>
             <tr>
               <td>Tenis</td>
               <td>
-                <input type="checkbox" />
+                <input type="checkbox" checked={true} />
               </td>
             </tr>
           </tbody>

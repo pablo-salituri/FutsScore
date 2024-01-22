@@ -3,8 +3,8 @@
         background-color: yellowgreen;
         display: flex;
         flex-direction: column;
-        width: 70vw;
-        height: 70vw;
+/*         width: 70vw;
+        height: 70vw; */
     }
 
     .image {
