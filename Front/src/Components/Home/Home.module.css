@@ -1,12 +1,11 @@
 @media (min-width: 1025px) {
     .homeContainer {
         background-color: silver;
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        row-gap: 5vh;
-        padding: 3vh 0;
+        width: 85%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Columnas de al menos 200px de ancho y máximo 1fr */
+        gap: 3vh 2.5vh; /* Espacio entre elementos */
+        padding: 3vh;
         overflow: auto;
     }
 }

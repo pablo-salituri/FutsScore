@@ -2,6 +2,23 @@
     .footerContainer {
         background-color: yellowgreen;
         height: 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5%;
+    }
+
+    .leftSection{
+        width: 33.33%;
+    }
+
+    .middleSection{
+        width: 33.33%;
+        text-align: center;
+    }
+
+    .rightSection{
+        width: 33.33%;
     }
 }
   
@@ -9,6 +26,10 @@
     .footerContainer {
         background-color: yellowgreen;
         height: 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5%;
     }
 } 
 
