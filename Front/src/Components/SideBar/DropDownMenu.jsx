@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import PriceFilter from "../Filter/PriceFilter";
 import styles from "./DropDownMenu.module.css";
 
 export default function DropDownMenu({
@@ -48,10 +49,7 @@ export default function DropDownMenu({
       ) : (
         //********************  Filtro por Precio ********************
         <>
-          <span>Entre</span>
-          <input type="text" />
-          <span>Y</span>
-          <input type="text" />
+          <PriceFilter />
         </>
       )}
 

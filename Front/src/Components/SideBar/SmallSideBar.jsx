@@ -2,7 +2,7 @@ import { useState } from "react";
 import { PiSoccerBallFill } from "react-icons/pi";
 import { MdAttachMoney } from "react-icons/md";
 import DropDownMenu from "./DropDownMenu";
-import styles from "./SideBar.module.css";
+import styles from "./SmallSideBar.module.css";
 
 export default function SideBar() {
   const [showDropDown, setShowDropDown] = useState(false);

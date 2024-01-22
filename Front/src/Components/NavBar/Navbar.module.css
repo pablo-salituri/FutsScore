@@ -5,6 +5,25 @@
 @media (min-width: 1025px) {
     .navBarContainer {
         height: 12%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .img {
+        height: 85%;
+    }
+
+    .title {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 2.5em;
+        color: white;
+    }
+
+    .button {
+        background-color: #17dd94;
+        width: 10vh;
     }
 }
   
