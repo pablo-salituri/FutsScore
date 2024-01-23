@@ -1,5 +1,6 @@
 import { Routes, Route /* , useLocation */ } from "react-router-dom";
 import MainPage from "./Components/MainPage/MainPage";
+import Admin from "./Components/Admin/Admin";
 // import "./App.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       {/* <div className='generalContainer'> */}
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/admin" element={<Admin />} />
         {/* <Route path="/properties/:id" element={<Detail />} /> */}
 
         {/* <Route path="*" element={<UnknownRoute />} /> */}
