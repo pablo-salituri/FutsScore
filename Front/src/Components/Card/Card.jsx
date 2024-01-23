@@ -5,12 +5,12 @@ export default function Card({ parameters }) {
     <div className={styles.cardContainer}>
       <img
         className={styles.image}
-        src={parameters.image}
-        alt={parameters.id}
+        src={parameters.ImgUrl}
+        alt={parameters.ImgUrl}
       />
-      <span className={styles.price}>Precio: {parameters.price}</span>
+      <span className={styles.price}>Precio: {parameters.Price}</span>
       <span className={styles.description}>
-        Descripción: {parameters.description}
+        Descripción: {parameters.Description}
       </span>
     </div>
   );
