@@ -19,7 +19,7 @@ const appIdFromEnv = process.env.REACT_APP_FIREBASE_APP_ID */
     storageBucket: storageBucketFromEnv,
     messagingSenderId: messagingSenderIdFromEnv,
     appId: appIdFromEnv,
-} */;
+} */
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -33,7 +33,6 @@ const firebaseConfig = {
 
 
 // Inicializamos la aplicación y la guardamos en firebaseApp
-const firebaseApp = initializeApp(firebaseConfig);
-export const storage = getStorage(firebaseApp)
 // Exportamos firebaseApp para poder utilizarla en cualquier lugar de la aplicación
-// export default firebaseApp;
+export const firebaseApp = initializeApp(firebaseConfig);
+export const storage = getStorage(firebaseApp)
