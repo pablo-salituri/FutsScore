@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { /* React, */ useEffect, useState } from "react";
 // import data from "./data";
 import Card from "../Card/Card";
 import { /* storage, */ firebaseApp } from "../Firebase/credentials";
@@ -29,7 +29,7 @@ export default function Home() {
     }); */
     getDataFromFirestore();
   }, []);
-  //!BREAKPOINT
+
   return (
     <div className={styles.homeContainer}>
       {/* {data.map((elem) => (
@@ -38,9 +38,11 @@ export default function Home() {
         </React.Fragment>
       ))} */}
       {cardList.map((card) => (
-        <React.Fragment key={card.ImgUrl}>
+        // <React.Fragment key={card.ImgUrl}>
+        <section key={card.ImgUrl} className={styles.cardContainerInHome}>
           <Card parameters={card} />
-        </React.Fragment>
+        </section>
+        // </React.Fragment>
         // <img key={picture.ImgUrl} src={picture.ImgUrl} alt="some-description" />
       ))}
     </div>
