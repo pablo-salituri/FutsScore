@@ -1,6 +1,7 @@
 import { Routes, Route /* , useLocation */ } from "react-router-dom";
 import MainPage from "./Components/MainPage/MainPage";
 import Admin from "./Components/Admin/Admin";
+import AddItem from "./Components/Admin/AddItem/AddItem";
 // import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/addItem" element={<AddItem />} />
         {/* <Route path="/properties/:id" element={<Detail />} /> */}
 
         {/* <Route path="*" element={<UnknownRoute />} /> */}

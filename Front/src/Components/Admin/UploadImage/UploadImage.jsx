@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { storage, firebaseApp } from "../Firebase/credentials";
+import { storage, firebaseApp } from "../../Firebase/credentials";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { v4 } from "uuid";
-import NavBar from "../NavBar/NavBar";
+// import NavBar from "../NavBar/NavBar";
 /* import styles from "./Admin.module.css"; */
 
 export default function UploadImage() {
@@ -39,7 +39,7 @@ export default function UploadImage() {
 
   return (
     <div /* className={styles.adminContainer} */>
-      <NavBar />
+      {/* <NavBar /> */}
       <input
         type="file"
         onChange={(event) => {
