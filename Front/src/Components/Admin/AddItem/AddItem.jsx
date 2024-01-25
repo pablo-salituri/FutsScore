@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import NavBar from "../../NavBar/NavBar";
 import Card from "../../Card/Card";
 import UploadImage from "../UploadImage/UploadImage";
@@ -90,7 +91,9 @@ export default function AddItem() {
       />
       <section>
         <UploadImage file={data.ImgUrl} />
-        <button>Cancelar</button>
+        <Link to="/admin">
+          <button>Cancelar</button>
+        </Link>
       </section>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import styles from "./Card.module.css";
 
 export default function Card({ parameters }) {
@@ -8,7 +8,9 @@ export default function Card({ parameters }) {
     <div className={styles.cardContainer}>
       <section className={styles.imageContainer}>
         {location === "/admin" && (
-          <button className={styles.editButton}>Ed</button>
+          <Link to="/admin/editItem">
+            <button className={styles.editButton}>Ed</button>
+          </Link>
         )}
         <img
           className={styles.image}
