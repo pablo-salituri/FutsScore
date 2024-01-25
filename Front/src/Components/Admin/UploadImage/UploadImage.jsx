@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { storage, firebaseApp } from "../../Firebase/credentials";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { v4 } from "uuid";
-// import NavBar from "../NavBar/NavBar";
 /* import styles from "./Admin.module.css"; */
 
-export default function UploadImage() {
+export default function UploadImage({ file }) {
   const firestore = getFirestore(firebaseApp);
 
   const [imageUpload, setImageUpload] = useState(null);
@@ -15,9 +14,9 @@ export default function UploadImage() {
     const docuRef = doc(firestore, `Cards/${uid}`);
 
     setDoc(docuRef, {
-      Description: "uploaded",
+      Description: "prueba",
       ImgUrl: url,
-      Price: 1278,
+      Price: 1,
     });
   }
 
@@ -37,15 +36,13 @@ export default function UploadImage() {
     });
   }
 
+  useEffect(() => {
+    setImageUpload(file);
+  }, [file]);
+
   return (
     <div /* className={styles.adminContainer} */>
       {/* <NavBar /> */}
-      <input
-        type="file"
-        onChange={(event) => {
-          setImageUpload(event.target.files[0]);
-        }}
-      />
       <button onClick={uploadImage}>Upload</button>
     </div>
   );

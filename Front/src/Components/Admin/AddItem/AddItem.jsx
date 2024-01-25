@@ -1,10 +1,9 @@
 import { useState } from "react";
 import NavBar from "../../NavBar/NavBar";
 import Card from "../../Card/Card";
-// import UploadImage from "../UploadImage/UploadImage";
+import UploadImage from "../UploadImage/UploadImage";
 import styles from "./AddItem.module.css";
-//!BREAKPOINT
-//!BREAKPOINT2
+
 export default function AddItem() {
   const [data, setData] = useState({
     Description: "",
@@ -19,8 +18,8 @@ export default function AddItem() {
     setData({ ...data, [field]: value });
   }
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
+  const handleImagePreview = (event) => {
+    const file = event.target.files[0];
 
     // Si el usuario cancela la selección, no hace nada
     if (!file) {
@@ -77,17 +76,11 @@ export default function AddItem() {
           name="image"
           accept="image/*"
           /* style={{ display: "none" }} */
-          onChange={handleImageUpload}
+          onChange={(event) => handleImagePreview(event)}
         />
       </div>
       <h4>Vista Previa</h4>
       <Card
-        /* parameters={{
-          Price: 2000,
-          Description: "Hola",
-          ImgUrl:
-            "https://firebasestorage.googleapis.com/v0/b/futsscore-be650.appspot.com/o/images%2F6f511a4a-7734-4596-940c-68a6e5e7b0c0?alt=media&token=b8380955-ffca-4693-a719-f07d0a4791b1",
-        }} */
         parameters={{
           Description: data.Description,
           Price: data.Price,
@@ -95,7 +88,10 @@ export default function AddItem() {
           ImgUrl: data.miniature,
         }}
       />
-      {/* <UploadImage /> */}
+      <section>
+        <UploadImage file={data.ImgUrl} />
+        <button>Cancelar</button>
+      </section>
     </div>
   );
 }
