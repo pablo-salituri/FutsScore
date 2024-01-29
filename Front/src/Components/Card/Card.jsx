@@ -8,22 +8,22 @@ export default function Card({ parameters }) {
     <div className={styles.cardContainer}>
       <section className={styles.imageContainer}>
         {location === "/admin" && (
-          <Link to="/admin/editItem">
+          <Link to={`/admin/editItem/${parameters.id}`}>
             <button className={styles.editButton}>Ed</button>
           </Link>
         )}
         <img
           className={styles.image}
-          src={parameters.ImgUrl}
-          alt={parameters.ImgUrl}
+          src={parameters.data.ImgUrl}
+          alt={parameters.data.ImgUrl}
         />
         {location === "/admin" && (
           <button className={styles.deleteButton}>El</button>
         )}
       </section>
-      <span className={styles.price}>Precio: {parameters.Price}</span>
+      <span className={styles.price}>Precio: {parameters.data.Price}</span>
       <span className={styles.description}>
-        Descripción: {parameters.Description}
+        Descripción: {parameters.data.Description}
       </span>
     </div>
   );

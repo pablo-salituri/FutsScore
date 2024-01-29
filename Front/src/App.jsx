@@ -22,7 +22,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/addItem" element={<AddItem />} />
-        <Route path="/admin/editItem" element={<EditItem />} />
+        <Route path="/admin/editItem/:id" element={<EditItem />} />
         {/* <Route path="/properties/:id" element={<Detail />} /> */}
 
         {/* <Route path="*" element={<UnknownRoute />} /> */}

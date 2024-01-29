@@ -15,7 +15,12 @@ export default function Home() {
 
   async function getDataFromFirestore() {
     const querySnapshot = await getDocs(collection(firestore, "Cards"));
-    const newData = querySnapshot.docs.map((doc) => doc.data());
+    const newData = querySnapshot.docs.map((doc) => {
+      return {
+        data: doc.data(),
+        id: doc.id,
+      };
+    });
     setCardList(newData);
   }
 
@@ -39,7 +44,7 @@ export default function Home() {
       ))} */}
       {cardList.map((card) => (
         // <React.Fragment key={card.ImgUrl}>
-        <section key={card.ImgUrl} className={styles.cardContainerInHome}>
+        <section key={card.data.ImgUrl} className={styles.cardContainerInHome}>
           <Card parameters={card} />
         </section>
         // </React.Fragment>
