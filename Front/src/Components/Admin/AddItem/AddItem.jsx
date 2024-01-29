@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../../NavBar/NavBar";
 import Card from "../../Card/Card";
-import UploadImage from "../UploadImage/UploadImage";
+import uploadImage from "../../../Utils/uploadImage";
+// import UploadImage from "../UploadImage/UploadImage";
 import styles from "./AddItem.module.css";
 
 export default function AddItem() {
@@ -92,7 +93,8 @@ export default function AddItem() {
         }}
       />
       <section>
-        <UploadImage file={data.ImgUrl} />
+        {/* <UploadImage file={data.ImgUrl} /> */}
+        <button onClick={() => uploadImage(data.ImgUrl)}>Subir</button>
         <Link to="/admin">
           <button>Cancelar</button>
         </Link>

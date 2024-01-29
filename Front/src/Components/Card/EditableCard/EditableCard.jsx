@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { getStorage, ref, deleteObject } from "firebase/storage";
+import deleteImage from "../../../Utils/deleteImage";
 import styles from "./EditableCard.module.css";
 
-const storage = getStorage();
-
+//!BREAKPOINT
 export default function EditableCard({ parameters }) {
   const [originalPicId, setOriginalPicId] = useState(null);
   const [info, setInfo] = useState(null);
@@ -37,14 +36,15 @@ export default function EditableCard({ parameters }) {
   }
 
   function handleSubmit() {
-    const desertRef = ref(storage, `images/${originalPicId}`);
+    deleteImage(originalPicId);
+    /* const desertRef = ref(storage, `images/${originalPicId}`);
     deleteObject(desertRef)
       .then(() => {
         console.log("borado con exito");
       })
       .catch((error) => {
         console.log(error);
-      });
+      }); */
   }
 
   useEffect(() => {
