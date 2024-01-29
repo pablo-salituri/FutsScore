@@ -83,10 +83,12 @@ export default function AddItem() {
       <h4>Vista Previa</h4>
       <Card
         parameters={{
-          Description: data.Description,
-          Price: data.Price,
-          //Para la vista previa paso la miniatura. Para la carga, el File
-          ImgUrl: data.miniature,
+          data: {
+            Description: data.Description,
+            Price: data.Price,
+            //Para la vista previa paso la miniatura. Para la carga, el File
+            ImgUrl: data.miniature,
+          },
         }}
       />
       <section>

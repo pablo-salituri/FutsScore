@@ -18,7 +18,7 @@ export default function EditItem() {
       const docuRef = doc(firestore, `Cards/${uid}`);
       const docuCifrada = await getDoc(docuRef);
       const finalInfo = docuCifrada.data();
-      setCardInfo({ data: finalInfo });
+      setCardInfo({ data: finalInfo, id: uid });
     }
 
     getData(id);
