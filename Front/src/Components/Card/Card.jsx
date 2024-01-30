@@ -1,7 +1,7 @@
 import { useLocation, Link } from "react-router-dom";
 import styles from "./Card.module.css";
 
-export default function Card({ parameters }) {
+export default function Card({ parameters, handleDeleteCard }) {
   const location = useLocation().pathname;
 
   return (
@@ -18,7 +18,12 @@ export default function Card({ parameters }) {
           alt={parameters.data.ImgUrl}
         />
         {location === "/admin" && (
-          <button className={styles.deleteButton}>El</button>
+          <button
+            className={styles.deleteButton}
+            onClick={() => handleDeleteCard(parameters.id)}
+          >
+            El
+          </button>
         )}
       </section>
       <span className={styles.price}>Precio: {parameters.data.Price}</span>
