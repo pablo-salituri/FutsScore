@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import uploadCard from "../../../Utils/uploadCard";
 import deleteImage from "../../../Utils/deleteImage";
+import deleteRecordFS from "../../../Utils/deleteRecordFS";
 import styles from "./EditableCard.module.css";
 
-//!BREAKPOINT
 export default function EditableCard({ parameters }) {
   const [originalPicId, setOriginalPicId] = useState(null);
   const [info, setInfo] = useState(null);
@@ -36,15 +37,9 @@ export default function EditableCard({ parameters }) {
   }
 
   function handleSubmit() {
+    uploadCard(info.ImgUrl);
     deleteImage(originalPicId);
-    /* const desertRef = ref(storage, `images/${originalPicId}`);
-    deleteObject(desertRef)
-      .then(() => {
-        console.log("borado con exito");
-      })
-      .catch((error) => {
-        console.log(error);
-      }); */
+    deleteRecordFS(originalPicId);
   }
 
   useEffect(() => {
@@ -85,7 +80,7 @@ export default function EditableCard({ parameters }) {
             className={styles.price}
             onChange={(event) => handleInputChange(event)}
           />
-          {/* <span className={styles.price}>Precio: {info.Price}</span> */}
+
           <input
             type="text"
             name="Description"
@@ -93,9 +88,7 @@ export default function EditableCard({ parameters }) {
             className={styles.description}
             onChange={(event) => handleInputChange(event)}
           />
-          {/* <span className={styles.description}>
-            Descripción: {info.Description}
-          </span> */}
+
           <button onClick={() => handleSubmit()}>Guardar</button>
         </div>
       )}
