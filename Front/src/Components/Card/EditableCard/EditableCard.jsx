@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import uploadCard from "../../../Utils/uploadCard";
 import deleteImage from "../../../Utils/deleteImage";
 import deleteRecordFS from "../../../Utils/deleteRecordFS";
+import updateRecordFS from "../../../Utils/updateRecordFS";
 import styles from "./EditableCard.module.css";
 
 export default function EditableCard({ parameters }) {
-  const [originalPicId, setOriginalPicId] = useState(null);
+  const [originalData, setOriginalData] = useState(null);
   const [info, setInfo] = useState(null);
 
   const handleImagePreview = (event) => {
@@ -37,9 +38,22 @@ export default function EditableCard({ parameters }) {
   }
 
   function handleSubmit() {
-    uploadCard(info.ImgUrl);
-    deleteImage(originalPicId);
-    deleteRecordFS(originalPicId);
+    //Si se cambia la imagen, se hace el recambio de card
+    if (info.ImgUrl) {
+      uploadCard(info);
+      deleteImage(originalData.id);
+      deleteRecordFS(originalData.id);
+    }
+
+    // Si no se cambia la imagen, se hace el update de la card
+    else {
+      const changes = [];
+      if (originalData.Description !== info.Description)
+        changes.push("Description");
+      if (originalData.Price !== info.Price) changes.push("Price");
+
+      changes.length && updateRecordFS(originalData.id, changes, info);
+    }
   }
 
   useEffect(() => {
@@ -49,7 +63,11 @@ export default function EditableCard({ parameters }) {
       Price: parameters.data.Price,
       miniature: parameters.data.ImgUrl,
     });
-    setOriginalPicId(parameters.id);
+    setOriginalData({
+      id: parameters.id,
+      Price: parameters.data.Price,
+      Description: parameters.data.Description,
+    });
   }, []);
 
   return (

@@ -3,23 +3,23 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { v4 } from "uuid";
 
-export default function uploadCard(file) {
+export default function uploadCard({ImgUrl, Description, Price}) {
   const firestore = getFirestore(firebaseApp);
 
   async function createInFirestore(uid, url) {
     const docuRef = doc(firestore, `Cards/${uid}`);
 
     setDoc(docuRef, {
-      Description: "prueba",
+      Description,
       ImgUrl: url,
-      Price: 1,
+      Price
     });
   }
 
-  if (file === null) return;
+  if (ImgUrl === null) return;
   const name = v4();
   const imageRef = ref(storage, `images/${name}`);
-  uploadBytes(imageRef, file).then(() => {
+  uploadBytes(imageRef, ImgUrl).then(() => {
     getDownloadURL(imageRef)
       .then((url) => {
         createInFirestore(name, url).then(() => alert("Image uploaded"));
