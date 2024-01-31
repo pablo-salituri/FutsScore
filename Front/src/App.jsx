@@ -1,5 +1,6 @@
 import { Routes, Route /* , useLocation */ } from "react-router-dom";
 import MainPage from "./Components/MainPage/MainPage";
+import Login from "./Components/Login/Login";
 import Admin from "./Components/Admin/Admin";
 import AddItem from "./Components/Admin/AddItem/AddItem";
 import EditItem from "./Components/Admin/EditItem/EditItem";
@@ -20,6 +21,7 @@ function App() {
       {/* <div className='generalContainer'> */}
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/addItem" element={<AddItem />} />
         <Route path="/admin/editItem/:id" element={<EditItem />} />
