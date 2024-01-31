@@ -50,12 +50,14 @@ export default function AddItem() {
         <input
           id="Description"
           type="text"
+          autoComplete="off"
           onChange={(event) => handleInputChange(event)}
         />
         <span>Precio:</span>
         <input
           id="Price"
           type="text"
+          autoComplete="off"
           onChange={(event) => handleInputChange(event)}
         />
       </section>
@@ -94,7 +96,7 @@ export default function AddItem() {
       />
       <section>
         {/* <UploadImage file={data.ImgUrl} /> */}
-        <button onClick={() => uploadCard(data.ImgUrl)}>Subir</button>
+        <button onClick={() => uploadCard(data)}>Subir</button>
         <Link to="/admin">
           <button>Cancelar</button>
         </Link>
