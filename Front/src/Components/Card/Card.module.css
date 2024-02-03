@@ -23,7 +23,7 @@
         height: 10%;
     }
 
-    .description {
+    .description, .type {
         background-color: aquamarine;
         height: 20%;
     }
@@ -54,7 +54,7 @@
         height: 10%;
     }
 
-    .description {
+    .description, .type {
         background-color: aquamarine;
         height: 20%;
     }
@@ -98,7 +98,7 @@
         height: 10%;
     }
 
-    .description {
+    .description, .type {
         background-color: aquamarine;
         height: 20%;
     }

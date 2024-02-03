@@ -9,6 +9,7 @@ import styles from "./AddItem.module.css";
 export default function AddItem() {
   const [data, setData] = useState({
     Description: "",
+    Type: "-",
     Price: null,
     ImgUrl: "",
     miniature: "",
@@ -46,13 +47,29 @@ export default function AddItem() {
     <div className={styles.addItemContainer}>
       <NavBar />
       <section>
-        <span>Descripción:</span>
+        {/* <span>Descripción:</span>
         <input
           id="Description"
           type="text"
           autoComplete="off"
           onChange={(event) => handleInputChange(event)}
-        />
+        /> */}
+        <span>Tipo:</span>
+        <select
+          /* name="" id="" */ defaultValue="-"
+          onChange={(event) => {
+            setData({ ...data, Type: event.target.value });
+          }}
+        >
+          <option disabled={true} value="-">
+            -
+          </option>
+          <option value="Basket">Basket</option>
+          <option value="Fútbol 5">Fútbol 5</option>
+          <option value="Fútbol 11">Fútbol 11</option>
+          <option value="Tenis">Tenis</option>
+        </select>
+
         <span>Precio:</span>
         <input
           id="Price"
@@ -88,6 +105,7 @@ export default function AddItem() {
         parameters={{
           data: {
             Description: data.Description,
+            Type: data.Type,
             Price: data.Price,
             //Para la vista previa paso la miniatura. Para la carga, el File
             ImgUrl: data.miniature,

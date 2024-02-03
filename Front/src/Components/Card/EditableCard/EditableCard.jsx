@@ -50,6 +50,7 @@ export default function EditableCard({ parameters }) {
       const changes = [];
       if (originalData.Description !== info.Description)
         changes.push("Description");
+      if (originalData.Type !== info.Type) changes.push("Type");
       if (originalData.Price !== info.Price) changes.push("Price");
 
       changes.length && updateRecordFS(originalData.id, changes, info);
@@ -60,12 +61,14 @@ export default function EditableCard({ parameters }) {
     setInfo({
       ImgUrl: "",
       Description: parameters.data.Description,
+      Type: parameters.data.Type,
       Price: parameters.data.Price,
       miniature: parameters.data.ImgUrl,
     });
     setOriginalData({
       id: parameters.id,
       Price: parameters.data.Price,
+      Type: parameters.data.Type,
       Description: parameters.data.Description,
     });
   }, []);
@@ -99,13 +102,28 @@ export default function EditableCard({ parameters }) {
             onChange={(event) => handleInputChange(event)}
           />
 
-          <input
+          {/* <input
             type="text"
             name="Description"
             value={info.Description}
             className={styles.description}
             onChange={(event) => handleInputChange(event)}
-          />
+          /> */}
+
+          <select
+            defaultValue="-"
+            onChange={(event) => {
+              setInfo({ ...info, Type: event.target.value });
+            }}
+          >
+            <option disabled={true} value="-">
+              -
+            </option>
+            <option value="Basket">Basket</option>
+            <option value="Fútbol 5">Fútbol 5</option>
+            <option value="Fútbol 11">Fútbol 11</option>
+            <option value="Tenis">Tenis</option>
+          </select>
 
           <button onClick={() => handleSubmit()}>Guardar</button>
         </div>

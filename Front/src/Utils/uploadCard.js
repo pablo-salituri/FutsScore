@@ -3,7 +3,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { v4 } from "uuid";
 
-export default function uploadCard({ImgUrl, Description, Price}) {
+export default function uploadCard({ImgUrl, Description, Type, Price}) {
   const firestore = getFirestore(firebaseApp);
 
   async function createInFirestore(uid, url) {
@@ -11,6 +11,7 @@ export default function uploadCard({ImgUrl, Description, Price}) {
 
     setDoc(docuRef, {
       Description,
+      Type,
       ImgUrl: url,
       Price
     });

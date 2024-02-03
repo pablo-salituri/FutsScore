@@ -27,9 +27,10 @@ export default function Card({ parameters, handleDeleteCard }) {
         )}
       </section>
       <span className={styles.price}>Precio: {parameters.data.Price}</span>
-      <span className={styles.description}>
+      {/* <span className={styles.description}>
         Descripción: {parameters.data.Description}
-      </span>
+      </span> */}
+      <span className={styles.type}>Tipo: {parameters.data.Type}</span>
     </div>
   );
 }
