@@ -1,4 +1,7 @@
 import { useState, useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { handleFilter } from "../../Redux/actions";
 import PriceFilter from "../Filter/PriceFilter";
 import styles from "./DropDownMenu.module.css";
 
@@ -10,11 +13,16 @@ export default function DropDownMenu({
   // handleDropDownMenu,
   // handleLogOut,
 }) {
+  const dropDownContainerRef = useRef(null);
+  const location = useLocation().pathname === "/" ? "Home" : "Not Home";
+  const dispatch = useDispatch();
+
+  const filter = useSelector((state) =>
+    location === "Home" ? state.publicFilter : state.adminFilter
+  );
+
   const [position, setPosition] = useState({ left: parseInt(x, 10), top: y });
   const [containerWidth, setContainerWidth] = useState(null);
-  const dropDownContainerRef = useRef(null);
-
-  const sports = ["allSoprts", "Fútbol 5", "Fútbol 11", "Tenis"];
 
   useEffect(() => {
     setPosition({ left: parseInt(x, 10), top: y });
@@ -39,11 +47,22 @@ export default function DropDownMenu({
         //********************  Filtro por Deporte ********************
         <table>
           <tbody>
-            {sports.map((sport) => (
-              <tr key={sport}>
-                <td>{sport}</td> <td>ok</td>
-              </tr>
-            ))}
+            {filter.sports.map((sport, index) => {
+              const sportName = Object.keys(sport)[0];
+              const sanitizedSportName = sportName.includes("_")
+                ? sportName.replace(/_/g, " ")
+                : sportName;
+
+              return (
+                <tr
+                  key={index}
+                  onClick={() => dispatch(handleFilter(location, sportName))}
+                >
+                  <td>{sanitizedSportName}</td>
+                  <td>{sport[sportName] ? "✔" : ""}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       ) : (
