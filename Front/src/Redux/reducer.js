@@ -8,8 +8,8 @@ const initialState = {
         Futbol_11: true,
         Tenis: true
       },
-      smallest: null,
-      largest: null
+      smallest: '',
+      largest: ''
     },
     adminFilter: {
       sports: {
@@ -18,8 +18,8 @@ const initialState = {
         Futbol_11: true,
         Tenis: true
       },
-      smallest: null,
-      largest: null
+      smallest: '',
+      largest: ''
     },
   };
 

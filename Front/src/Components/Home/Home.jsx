@@ -19,8 +19,6 @@ export default function Home() {
     location === "Home" ? state.publicFilter : state.adminFilter
   );
 
-  // console.log(filter.sports);
-
   async function getDataFromFirestore() {
     const querySnapshot = await getDocs(collection(firestore, "Cards"));
     const newData = querySnapshot.docs.map((doc) => {
@@ -40,11 +38,16 @@ export default function Home() {
   useEffect(() => {
     getDataFromFirestore();
   }, []);
-
+  //!BREAKPOINT
   return (
     <div className={styles.homeContainer}>
       {cardList.map((card) => {
-        if (filter.sports[card.data.Type])
+        if (
+          filter.sports[card.data.Type] &&
+          (filter.smallest === "" ||
+            (card.data.Price >= filter.smallest &&
+              card.data.Price <= filter.largest))
+        )
           return (
             <section
               key={card.data.ImgUrl}
