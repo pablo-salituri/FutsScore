@@ -56,7 +56,7 @@ export default function AddItem() {
         /> */}
         <span>Tipo:</span>
         <select
-          /* name="" id="" */ defaultValue="-"
+          defaultValue="-"
           onChange={(event) => {
             setData({ ...data, Type: event.target.value });
           }}
@@ -65,8 +65,8 @@ export default function AddItem() {
             -
           </option>
           <option value="Basket">Basket</option>
-          <option value="Fútbol 5">Fútbol 5</option>
-          <option value="Fútbol 11">Fútbol 11</option>
+          <option value="Futbol_5">Fútbol 5</option>
+          <option value="Futbol_11">Fútbol 11</option>
           <option value="Tenis">Tenis</option>
         </select>
 

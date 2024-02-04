@@ -120,8 +120,8 @@ export default function EditableCard({ parameters }) {
               -
             </option>
             <option value="Basket">Basket</option>
-            <option value="Fútbol 5">Fútbol 5</option>
-            <option value="Fútbol 11">Fútbol 11</option>
+            <option value="Futbol_5">Fútbol 5</option>
+            <option value="Futbol_11">Fútbol 11</option>
             <option value="Tenis">Tenis</option>
           </select>
 

@@ -19,7 +19,7 @@ export default function Home() {
     location === "Home" ? state.publicFilter : state.adminFilter
   );
 
-  console.log(filter);
+  // console.log(filter.sports);
 
   async function getDataFromFirestore() {
     const querySnapshot = await getDocs(collection(firestore, "Cards"));
@@ -43,11 +43,18 @@ export default function Home() {
 
   return (
     <div className={styles.homeContainer}>
-      {cardList.map((card) => (
-        <section key={card.data.ImgUrl} className={styles.cardContainerInHome}>
-          <Card parameters={card} handleDeleteCard={handleDeleteCard} />
-        </section>
-      ))}
+      {cardList.map((card) => {
+        if (filter.sports[card.data.Type])
+          return (
+            <section
+              key={card.data.ImgUrl}
+              className={styles.cardContainerInHome}
+            >
+              <Card parameters={card} handleDeleteCard={handleDeleteCard} />
+            </section>
+          );
+        else return null;
+      })}
     </div>
   );
 }

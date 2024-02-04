@@ -47,19 +47,18 @@ export default function DropDownMenu({
         //********************  Filtro por Deporte ********************
         <table>
           <tbody>
-            {filter.sports.map((sport, index) => {
-              const sportName = Object.keys(sport)[0];
+            {Object.entries(filter.sports).map(([sportName, value]) => {
               const sanitizedSportName = sportName.includes("_")
                 ? sportName.replace(/_/g, " ")
                 : sportName;
 
               return (
                 <tr
-                  key={index}
+                  key={sportName}
                   onClick={() => dispatch(handleFilter(location, sportName))}
                 >
                   <td>{sanitizedSportName}</td>
-                  <td>{sport[sportName] ? "✔" : ""}</td>
+                  <td>{value ? "✔" : ""}</td>
                 </tr>
               );
             })}
