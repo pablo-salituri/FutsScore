@@ -1,4 +1,4 @@
-import {HANDLE_PUBLIC_FILTER/* , HANDLE_ADMIN_FILTER */} from './types';
+import {HANDLE_PUBLIC_FILTER, /* HANDLE_ADMIN_FILTER, */ HANDLE_PUBLIC_PRICE/* , HANDLE_ADMIN_PRICE */} from './types';
 
 const initialState = {
     publicFilter: {
@@ -8,7 +8,8 @@ const initialState = {
         Futbol_11: true,
         Tenis: true
       },
-      price: 0
+      smallest: null,
+      largest: null
     },
     adminFilter: {
       sports: {
@@ -17,7 +18,8 @@ const initialState = {
         Futbol_11: true,
         Tenis: true
       },
-      price: 0
+      smallest: null,
+      largest: null
     },
   };
 
@@ -38,6 +40,18 @@ const reducer = (state = initialState, { type, payload }) => {
         publicFilter: {
           ...state.publicFilter,
           sports: Object.assign({}, ...updatedSports)
+        }
+      };
+    }
+
+    case HANDLE_PUBLIC_PRICE: {
+      const {smallest,largest} = payload
+      return {
+        ...state,
+        publicFilter: {
+          ...state.publicFilter,
+          smallest,
+          largest
         }
       };
     }

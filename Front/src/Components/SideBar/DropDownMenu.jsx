@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { handleFilter } from "../../Redux/actions";
+import { handleSportFilter } from "../../Redux/actions";
 import PriceFilter from "../Filter/PriceFilter";
 import styles from "./DropDownMenu.module.css";
 
@@ -55,7 +55,9 @@ export default function DropDownMenu({
               return (
                 <tr
                   key={sportName}
-                  onClick={() => dispatch(handleFilter(location, sportName))}
+                  onClick={() =>
+                    dispatch(handleSportFilter(location, sportName))
+                  }
                 >
                   <td>{sanitizedSportName}</td>
                   <td>{value ? "✔" : ""}</td>
