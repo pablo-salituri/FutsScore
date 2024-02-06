@@ -5,14 +5,7 @@ import { handleSportFilter } from "../../Redux/actions";
 import PriceFilter from "../Filter/PriceFilter";
 import styles from "./DropDownMenu.module.css";
 
-export default function DropDownMenu({
-  x,
-  y,
-  showDropDown,
-  // logged,
-  // handleDropDownMenu,
-  // handleLogOut,
-}) {
+export default function DropDownMenu({ x, y, showDropDown }) {
   const dropDownContainerRef = useRef(null);
   const location = useLocation().pathname === "/" ? "Home" : "Not Home";
   const dispatch = useDispatch();
@@ -72,34 +65,6 @@ export default function DropDownMenu({
           <PriceFilter />
         </>
       )}
-
-      {/* <li>Hola</li>
-      <li>Hola</li>
-      <li>Hola</li>
-      <li>Hola</li> */}
-      {/* <hr className={styles.separator} />
-        {logged ? (
-          <>
-            <li>
-              <Link
-                to="/admin"
-                className="nav-link"
-                onClick={handleDropDownMenu}
-              >
-                Panel de Admin
-              </Link>
-            </li>
-            <hr className={styles.separator} />
-            <li onClick={() => handleLogOut()}>Logout</li>
-          </>
-        ) : (
-          <li>
-            <Link className="nav-link" to="/login" onClick={handleDropDownMenu}>
-              Login
-            </Link>
-          </li> 
-        )}*/}
-      {/* </ul> */}
     </div>
   );
 }
