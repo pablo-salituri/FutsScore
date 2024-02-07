@@ -35,7 +35,6 @@ export default function DropDownMenu({ x, y, showDropDown }) {
         zIndex: "3",
       }}
     >
-      {/* <ul className={styles.list}> */}
       {showDropDown === "type" ? (
         //********************  Filtro por Deporte ********************
         <table>

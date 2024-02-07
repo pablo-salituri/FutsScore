@@ -4,7 +4,7 @@ import { MdAttachMoney } from "react-icons/md";
 import DropDownMenu from "./DropDownMenu";
 import styles from "./SmallSideBar.module.css";
 
-export default function SideBar() {
+export default function SmallSideBar() {
   const [showDropDown, setShowDropDown] = useState(false);
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
 

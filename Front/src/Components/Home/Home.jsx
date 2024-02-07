@@ -38,7 +38,7 @@ export default function Home() {
   useEffect(() => {
     getDataFromFirestore();
   }, []);
-  //!BREAKPOINT
+
   return (
     <div className={styles.homeContainer}>
       {cardList.map((card) => {

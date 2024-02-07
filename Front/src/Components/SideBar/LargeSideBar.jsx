@@ -4,7 +4,7 @@ import PriceFilter from "../Filter/PriceFilter";
 import { handleSportFilter } from "../../Redux/actions";
 import styles from "./LargeSideBar.module.css";
 
-export default function SideBar() {
+export default function LargeSideBar() {
   const dispatch = useDispatch();
   const location = useLocation().pathname === "/" ? "Home" : "Not Home";
 

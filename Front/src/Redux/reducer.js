@@ -1,4 +1,4 @@
-import {HANDLE_PUBLIC_FILTER, /* HANDLE_ADMIN_FILTER, */ HANDLE_PUBLIC_PRICE/* , HANDLE_ADMIN_PRICE */} from './types';
+import {HANDLE_PUBLIC_FILTER, HANDLE_ADMIN_FILTER, HANDLE_PUBLIC_PRICE, HANDLE_ADMIN_PRICE} from './types';
 
 const initialState = {
     publicFilter: {
@@ -50,6 +50,36 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         publicFilter: {
           ...state.publicFilter,
+          smallest,
+          largest
+        }
+      };
+    }
+
+    case HANDLE_ADMIN_FILTER: {
+      const updatedSports = Object.entries(state.adminFilter.sports).map(
+        ([sportName, value]) => {
+          return {
+            [sportName]: sportName === payload ? !value : value
+          };
+        }
+      );
+
+      return {
+        ...state,
+        adminFilter: {
+          ...state.adminFilter,
+          sports: Object.assign({}, ...updatedSports)
+        }
+      };
+    }
+
+    case HANDLE_ADMIN_PRICE: {
+      const {smallest,largest} = payload
+      return {
+        ...state,
+        adminFilter: {
+          ...state.adminFilter,
           smallest,
           largest
         }
