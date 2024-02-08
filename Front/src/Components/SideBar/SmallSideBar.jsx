@@ -30,7 +30,6 @@ export default function SmallSideBar() {
       >
         <MdAttachMoney className={styles.icon} />
       </section>
-      <span>Limpiar Filtros</span>
       {showDropDown && (
         <DropDownMenu
           x={buttonPosition.x}

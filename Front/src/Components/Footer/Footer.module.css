@@ -35,11 +35,15 @@
 
 @media (max-width: 768px) {
     .footerContainer {
-        background-color: yellowgreen;
+        background-color: rgba(191,191,191,0.28);
         height: 10%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0 5%;
+    }
+
+    .middleSection {
+        color: white;
     }
 }

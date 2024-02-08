@@ -5,11 +5,19 @@ import styles from "./NavBar.module.css";
 export default function NavBar() {
   return (
     <div className={styles.navBarContainer}>
-      <img className={styles.img} src={logo} alt="logo" />
-      <span className={styles.title}>FuttScore</span>
-      <Link to="/login">
-        <span className={styles.button}>Login</span>
-      </Link>
+      <section className={styles.leftSection}>
+        <img className={styles.img} src={logo} alt="logo" />
+      </section>
+
+      <section className={styles.middleSection}>
+        <span className={styles.title}>FuttScore</span>
+      </section>
+
+      <section className={styles.rightSection}>
+        <Link to="/login">
+          <span className={styles.button}>Login</span>
+        </Link>
+      </section>
     </div>
   );
 }

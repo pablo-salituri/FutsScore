@@ -4,8 +4,9 @@ import styles from "./Footer.module.css";
 export default function Footer() {
   const [width, setWidth] = useState(window.innerWidth);
 
-  const telefono = 100;
-  const mail = "hola";
+  const telefono = import.meta.env.VITE_PHONE_NUMBER;
+  const mail = import.meta.env.VITE_MAIL;
+  // const mail = "hola";
   const numero = 100;
 
   useEffect(() => {
@@ -27,12 +28,17 @@ export default function Footer() {
           href={`https://web.whatsapp.com/send?phone=${telefono}`}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ display: "flex", alignItems: "center", columnGap: "10px" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            columnGap: "10px",
+            color: "white",
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            width="20"
+            height="20"
             fill="currentColor"
             /* class="bi bi-whatsapp" */ viewBox="0 0 16 16"
           >
@@ -41,7 +47,7 @@ export default function Footer() {
           {width > 1024 && <p>{numero}</p>}
         </a>
       </section>
-      <span className={styles.middleSection}>Contactanos</span>
+      <span className={styles.middleSection}>CONTACTANOS</span>
       <section className={styles.rightSection}>
         <a
           href={`mailto:${mail}`}
@@ -50,13 +56,14 @@ export default function Footer() {
             alignItems: "center",
             columnGap: "10px",
             justifyContent: "flex-end",
+            color: "white",
           }}
         >
           {width > 1024 && <p>{mail}</p>}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            width="20"
+            height="20"
             fill="currentColor"
             /* class="bi bi-envelope" */ viewBox="0 0 16 16"
           >

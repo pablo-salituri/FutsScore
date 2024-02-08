@@ -26,7 +26,7 @@
 
 @media (max-width: 768px) {
     .sideBarContainer {
-        background-color: pink;
+        background-color: #6d82cb;
         height: 10%;
         display: flex;
         justify-content: space-around;
@@ -35,7 +35,8 @@
 
     .iconContainer {
         background-color: #17dd94;
-        height: 70%;
+        height: 80%;
+        margin-bottom: 10px;
         border-radius: 50%;
         aspect-ratio: 1/1;
         display: flex;
