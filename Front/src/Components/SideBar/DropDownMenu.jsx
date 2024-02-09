@@ -1,18 +1,24 @@
 import { useState, useRef, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { /* useSelector,  */ useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { handleSportFilter } from "../../Redux/actions";
 import PriceFilter from "../Filter/PriceFilter";
 import styles from "./DropDownMenu.module.css";
 
-export default function DropDownMenu({ x, y, showDropDown }) {
+export default function DropDownMenu({
+  x,
+  y,
+  showDropDown,
+  setShowDropDown,
+  filter,
+}) {
   const dropDownContainerRef = useRef(null);
   const location = useLocation().pathname === "/" ? "Home" : "Not Home";
   const dispatch = useDispatch();
 
-  const filter = useSelector((state) =>
+  /* const filter = useSelector((state) =>
     location === "Home" ? state.publicFilter : state.adminFilter
-  );
+  ); */
 
   const [position, setPosition] = useState({ left: parseInt(x, 10), top: y });
   const [containerWidth, setContainerWidth] = useState(null);
@@ -61,7 +67,7 @@ export default function DropDownMenu({ x, y, showDropDown }) {
       ) : (
         //********************  Filtro por Precio ********************
         <>
-          <PriceFilter />
+          <PriceFilter setShowDropDown={setShowDropDown} />
         </>
       )}
     </div>

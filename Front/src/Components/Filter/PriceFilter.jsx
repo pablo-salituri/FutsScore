@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { handlePriceFilter } from "../../Redux/actions";
-//!BREAKPOINT
-export default function PriceFilter() {
+import styles from "./PriceFilter.module.css";
+
+export default function PriceFilter({ setShowDropDown }) {
   const dispatch = useDispatch();
   const location = useLocation().pathname === "/" ? "Home" : "Not Home";
 
@@ -31,13 +32,15 @@ export default function PriceFilter() {
     }
 
     dispatch(handlePriceFilter(location, smallest, largest));
+    setShowDropDown(false);
   }
 
   return (
     <>
-      <span>Entre</span>
+      <span style={{ alignSelf: "center" }}>Desde</span>
       <input
         type="text"
+        className={styles.input}
         value={inputs.input1}
         onChange={(event) =>
           setInputs({
@@ -46,9 +49,10 @@ export default function PriceFilter() {
           })
         }
       />
-      <span>Y</span>
+      <span style={{ alignSelf: "center" }}>Hasta</span>
       <input
         type="text"
+        className={styles.input}
         value={inputs.input2}
         onChange={(event) =>
           setInputs({
@@ -57,8 +61,23 @@ export default function PriceFilter() {
           })
         }
       />
-      <button onClick={() => handleSmallestLargest()}>Aplicar</button>
-      <button>Restaurar</button>
+      <section className={styles.buttonSection}>
+        <button
+          className={styles.button}
+          onClick={() => handleSmallestLargest()}
+        >
+          Aplicar
+        </button>
+        <button
+          className={styles.button}
+          onClick={() => {
+            dispatch(handlePriceFilter(location, "", ""));
+            setShowDropDown(false);
+          }}
+        >
+          Restaurar
+        </button>
+      </section>
     </>
   );
 }
