@@ -35,7 +35,7 @@
 
 @media (max-width: 768px) {
     .footerContainer {
-        background-color: rgba(191,191,191,0.28);
+        background-color: rgba(191,191,191,0.2);
         height: 10%;
         display: flex;
         justify-content: space-between;
