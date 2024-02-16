@@ -36,15 +36,20 @@
     .homeContainer {
         height: 90%;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        row-gap: 5vh;
-        padding: 3vh 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5vh;
+        padding: 4vh 3vh;
         overflow: auto;
     }
 
     .cardContainerInHome {
-        width: 60%;
-        height: 60%;
+        width: 37vh;
+        height: 32vh;
+        background-color: rgb(181 181 181 / 61%);
+        border: 2px solid white;
+        border-radius: 15px;
+        padding: 10px;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     }
 }

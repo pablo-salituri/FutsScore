@@ -26,11 +26,19 @@ export default function Card({ parameters, handleDeleteCard }) {
           </button>
         )}
       </section>
-      <span className={styles.price}>Precio: {parameters.data.Price}</span>
+      <span className={styles.type}>
+        {parameters.data.Type === "Futbol_11"
+          ? "Fútbol 11"
+          : parameters.data.Type === "Futbol_5"
+          ? "Fútbol 5"
+          : parameters.data.Type}
+      </span>
       {/* <span className={styles.description}>
         Descripción: {parameters.data.Description}
       </span> */}
-      <span className={styles.type}>Tipo: {parameters.data.Type}</span>
+      <span className={styles.price}>
+        $ {Number(parameters.data.Price).toLocaleString()}
+      </span>
     </div>
   );
 }
