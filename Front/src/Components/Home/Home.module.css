@@ -41,6 +41,7 @@
         gap: 5vh;
         padding: 4vh 3vh;
         overflow: auto;
+        border-top: 2px solid white;
     }
 
     .cardContainerInHome {

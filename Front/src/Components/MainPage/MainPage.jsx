@@ -23,6 +23,7 @@ export default function App() {
 
   return (
     <div className={styles.mainContainer}>
+      <div className={styles.headerBackground}>A</div>
       <NavBar />
       <section className={styles.body}>
         {width < 1025 ? <SmallSideBar /> : <LargeSideBar />}
