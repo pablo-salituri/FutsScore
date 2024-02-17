@@ -7,6 +7,8 @@ import {
   browserSessionPersistence,
 } from "firebase/auth";
 import { firebaseApp } from "../Firebase/credentials";
+import { MdLogin } from "react-icons/md";
+import { FaArrowCircleLeft } from "react-icons/fa";
 import styles from "./Login.module.css";
 
 const auth = getAuth(firebaseApp);
@@ -44,19 +46,38 @@ export default function Login() {
 
   return (
     <div className={styles.loginContainer}>
-      <input
-        type="text"
-        value={email}
-        onChange={(event) => setEmail(event.target.value)}
-      />
-      <input
-        type="text"
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-      />
-      <button onClick={() => handleLogin()}>Login</button>
-      <button>Volver</button>
-      <span>Recuperar Contraseña</span>
+      <section className={styles.backgroundContainer}></section>
+      <section className={styles.opaqueContainer}>
+        <input
+          type="text"
+          className={styles.input}
+          placeholder="Mail"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+        <input
+          type="text"
+          className={styles.input}
+          placeholder="Contraseña"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <button
+          className={styles.button}
+          /* style={{ backgroundColor: "#0275d8" }} */
+          onClick={() => handleLogin()}
+        >
+          <MdLogin className={styles.icon} /> Acceder
+        </button>
+        <button
+          className={styles.button}
+          /* style={{ backgroundColor: "#eb7878" }} */
+          onClick={() => navigate(-1)}
+        >
+          <FaArrowCircleLeft className={styles.icon} /> Volver
+        </button>
+        <span>Recuperar Contraseña</span>
+      </section>
     </div>
   );
 }

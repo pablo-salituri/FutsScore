@@ -1,12 +1,65 @@
 @media (max-width: 768px) {
     .loginContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: absolute;
         width: 100%;
         height: 100%;
-        top: 0;
     }
-    
-    .addButton {
+
+    .backgroundContainer {
+        background-image: url('../../assets/Logo.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.5;
+        width: 100%;
+        height: 100%
+    }
+
+    .opaqueContainer {
+        background-color: rgb(114 114 114 / 40%);
+        color: white;
+        width: 85%;
+        height: 75%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         position: absolute;
+        border: 2px solid white;
+        border-radius: 30px;
+        row-gap: 5%;
     }
+
+    .input {
+        width: 70%;
+        height: 6%;
+        background-color:#d6d6d6;
+        text-align: center;
+    }
+
+    .input::placeholder {
+        text-align: center;
+        font-style: italic;
+    }
+
+    .button {
+        background-color: #9a349a;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 8%;
+        border: 1px solid silver;
+        width: 30%;
+        height: 9%;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+
+    .icon {
+        scale: 1.3;
+    }
+
 }
