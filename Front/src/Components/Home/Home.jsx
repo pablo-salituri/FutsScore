@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation /* , Link */ } from "react-router-dom";
 import Card from "../Card/Card";
 import { firebaseApp } from "../Firebase/credentials";
 import { getDocs, collection, getFirestore } from "firebase/firestore";
 import deleteRecordFS from "../../Utils/deleteRecordFS";
 import deleteImage from "../../Utils/deleteImage";
+import { IoMdCloudUpload } from "react-icons/io";
+import { AiFillTool } from "react-icons/ai";
 import styles from "./Home.module.css";
 
 const firestore = getFirestore(firebaseApp);
@@ -41,6 +43,19 @@ export default function Home() {
 
   return (
     <div className={styles.homeContainer}>
+      {location === "Not Home" && (
+        <div
+          className={styles.uploadContainer}
+          onClick={() => (window.location.href = "/admin/addItem")}
+        >
+          <IoMdCloudUpload className={styles.icon} />
+        </div>
+      )}
+      {location === "Not Home" && (
+        <div className={styles.toolContainer}>
+          <AiFillTool className={styles.icon} />
+        </div>
+      )}
       {cardList.map((card) => {
         if (
           filter.sports[card.data.Type] &&
