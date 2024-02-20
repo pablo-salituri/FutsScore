@@ -5,6 +5,13 @@
         height: 100%;
         top: 0;
     }
+
+    .body {
+        /* background-color: aqua; */
+        display: flex;
+        flex-direction: column;
+        height: 88%;
+    }
     
     .addButton {
         position: absolute;

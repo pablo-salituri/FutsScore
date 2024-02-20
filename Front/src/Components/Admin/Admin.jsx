@@ -25,11 +25,13 @@ export default function Admin() {
   return (
     <div className={styles.adminContainer}>
       <NavBar />
-      {width < 1025 ? <SmallSideBar /> : <LargeSideBar />}
-      <Link to="/admin/addItem">
-        <button className={styles.addButton}>+</button>
-      </Link>
-      <Home />
+      <section className={styles.body}>
+        {width < 1025 ? <SmallSideBar /> : <LargeSideBar />}
+        <Link to="/admin/addItem">
+          <button className={styles.addButton}>+</button>
+        </Link>
+        <Home />
+      </section>
     </div>
   );
 }

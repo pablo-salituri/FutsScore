@@ -33,13 +33,20 @@
     }
 
     .input {
+        /* background-color:#d6d6d6; */
+        background-color: transparent;
+        color: white;
         width: 70%;
         height: 6%;
-        background-color:#d6d6d6;
+        font-size: 1.1em;
+        border: none;
+        border-bottom: 1px solid white;
         text-align: center;
     }
 
     .input::placeholder {
+        color: white;
+        font-size: 0.9em;
         text-align: center;
         font-style: italic;
     }
@@ -58,9 +65,6 @@
         color: white;
         width: 75%;
         height: 75%;
-        /* width: 25px;
-        height: 25px; */
-
     }
 
     .button {
