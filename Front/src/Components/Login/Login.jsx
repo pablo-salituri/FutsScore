@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   setPersistence,
   browserSessionPersistence,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { firebaseApp } from "../Firebase/credentials";
 import { MdLogin } from "react-icons/md";
@@ -16,6 +17,8 @@ import styles from "./Login.module.css";
 const auth = getAuth(firebaseApp);
 
 export default function Login() {
+  const mailAddress = import.meta.env.VITE_MAIL;
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -23,25 +26,11 @@ export default function Login() {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleLogin = async () => {
-    // e.preventDefault();
-
     try {
       setPersistence(auth, browserSessionPersistence);
-      /* const response =  */ await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      /* dispatch(
-              handleLoginLogout({ operation: "login", uid: response.user.uid })
-            ); */
+      await signInWithEmailAndPassword(auth, email, password);
+
       navigate("/admin");
-      /* else
-            Swal.fire({
-              text: "Credenciales incorrectas",
-              icon: "error",
-              allowOutsideClick: false,
-            }); */
     } catch (error) {
       Swal.fire({
         text: "Credenciales incorrectas",
@@ -50,6 +39,34 @@ export default function Login() {
       });
     }
   };
+
+  async function recoverPassword() {
+    sendPasswordResetEmail(auth, mailAddress)
+      .then(() => {
+        Swal.fire({
+          title: "Recuperación enviada",
+          text: "Revise su correo",
+          icon: "success",
+          allowOutsideClick: false,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  async function handleRecuperation() {
+    const { value: email } = await Swal.fire({
+      title: "Recuperar Contraseña",
+      input: "email",
+      /* inputLabel: "Your email address", */
+      inputPlaceholder: "Ingrese correo",
+    });
+    if (email) {
+      if (email === mailAddress) recoverPassword();
+      else Swal.fire("El correo no es válido.");
+    }
+  }
 
   return (
     <div className={styles.loginContainer}>
@@ -96,14 +113,16 @@ export default function Login() {
         >
           <MdLogin className={styles.icon} /> Acceder
         </button>
-        <button
-          className={styles.button}
-          /* style={{ backgroundColor: "#eb7878" }} */
-          onClick={() => navigate(-1)}
-        >
+        <button className={styles.button} onClick={() => navigate(-1)}>
           <FaArrowCircleLeft className={styles.icon} /> Volver
         </button>
-        <span>Recuperar Contraseña</span>
+
+        <span
+          style={{ textDecoration: "underline" }}
+          onClick={handleRecuperation}
+        >
+          Recuperar Contraseña
+        </span>
       </section>
     </div>
   );
