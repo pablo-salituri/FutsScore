@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/Logo.png";
 import styles from "./NavBar.module.css";
 
 export default function NavBar() {
+  const location = useLocation().pathname;
+
   return (
     <div className={styles.navBarContainer}>
       <section className={styles.leftSection}>
@@ -14,9 +16,13 @@ export default function NavBar() {
       </section>
 
       <section className={styles.rightSection}>
-        <Link to="/login">
-          <span className={styles.button}>Login</span>
-        </Link>
+        {location === "/" ? (
+          <Link to="/login">
+            <span className={styles.button}>Login</span>
+          </Link>
+        ) : (
+          <span className={styles.button}>Logout</span>
+        )}
       </section>
     </div>
   );

@@ -13,7 +13,37 @@
         height: 88%;
     }
     
-    .addButton {
+    .uploadContainer {
+        background-color: #9a349a;
+        width: 35px;
+        height: 35px;
         position: absolute;
+        left: 2.5vh;
+        margin-top: 2vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+
+    .toolContainer {
+        background-color: #9a349a;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        right: 2.5vh;
+        margin-top: 2vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+
+    .icon {
+        color: white;
+        width:70%;
+        height: 70%;
     }
 }
