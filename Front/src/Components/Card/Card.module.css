@@ -76,10 +76,19 @@
         position: relative;
     }
 
-    .editButton {
+    .editContainer {
+        background-color: #90d0f7;
+        color: black;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
         position: absolute;
         left: 0;
         top: 0;
+        display: flex;
+        justify-content: center;
+        border: 1px solid black;
+        align-items: center;
     }
 
     .image {
@@ -88,10 +97,19 @@
         object-fit: contain;
     }
 
-    .deleteButton {
+    .deleteContainer {
+        background-color: #ff7777;
+        color: black;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
         position: absolute;
         right: 0;
         top: 0;
+        display: flex;
+        justify-content: center;
+        border: 1px solid black;
+        align-items: center;
     }
 
     .description, .type {

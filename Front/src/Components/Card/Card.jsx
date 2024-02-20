@@ -1,4 +1,5 @@
 import { useLocation, Link } from "react-router-dom";
+import { MdModeEdit, MdDelete } from "react-icons/md";
 import styles from "./Card.module.css";
 
 export default function Card({ parameters, handleDeleteCard }) {
@@ -9,7 +10,9 @@ export default function Card({ parameters, handleDeleteCard }) {
       <section className={styles.imageContainer}>
         {location === "/admin" && (
           <Link to={`/admin/editItem/${parameters.id}`}>
-            <button className={styles.editButton}>Ed</button>
+            <div className={styles.editContainer}>
+              <MdModeEdit />
+            </div>
           </Link>
         )}
         <img
@@ -18,12 +21,16 @@ export default function Card({ parameters, handleDeleteCard }) {
           alt={parameters.data.ImgUrl}
         />
         {location === "/admin" && (
-          <button
-            className={styles.deleteButton}
-            onClick={() => handleDeleteCard(parameters.id)}
-          >
-            El
-          </button>
+          <div className={styles.deleteContainer}>
+            <MdDelete />
+
+            {/* <button
+              className={styles.deleteButton}
+              onClick={() => handleDeleteCard(parameters.id)}
+            >
+              El
+            </button> */}
+          </div>
         )}
       </section>
       <span className={styles.type}>
