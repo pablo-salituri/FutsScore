@@ -44,6 +44,25 @@
         font-style: italic;
     }
 
+    .eyeContainer {
+        background-color: #9a349a;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+        border-radius: 50%;
+    }
+
+    .eyeIcon {
+        color: white;
+        width: 75%;
+        height: 75%;
+        /* width: 25px;
+        height: 25px; */
+
+    }
+
     .button {
         background-color: #9a349a;
         color: white;
