@@ -22,7 +22,7 @@ export default function Card({ parameters, handleDeleteCard }) {
         />
         {location === "/admin" && (
           <div className={styles.deleteContainer}>
-            <MdDelete />
+            <MdDelete onClick={() => handleDeleteCard(parameters.id)} />
 
             {/* <button
               className={styles.deleteButton}

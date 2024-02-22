@@ -6,7 +6,7 @@ export default function uploadImage(originalPicId ) {
   const desertRef = ref(storage, `images/${originalPicId}`);
     deleteObject(desertRef)
       .then(() => {
-        console.log("borado con exito");
+        console.log("Imagen borrada con exito de Storage");
       })
       .catch((error) => {
         console.log(error);
