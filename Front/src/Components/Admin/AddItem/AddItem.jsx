@@ -46,79 +46,93 @@ export default function AddItem() {
   return (
     <div className={styles.addItemContainer}>
       <NavBar />
-      <section>
-        {/* <span>Descripción:</span>
-        <input
-          id="Description"
-          type="text"
-          autoComplete="off"
-          onChange={(event) => handleInputChange(event)}
-        /> */}
-        <span>Tipo:</span>
-        <select
-          defaultValue="-"
-          onChange={(event) => {
-            setData({ ...data, Type: event.target.value });
-          }}
-        >
-          <option disabled={true} value="-">
-            -
-          </option>
-          <option value="Basket">Basket</option>
-          <option value="Futbol_5">Fútbol 5</option>
-          <option value="Futbol_11">Fútbol 11</option>
-          <option value="Tenis">Tenis</option>
-        </select>
+      <div className={styles.addItemOuter}>
+        <div className={styles.addItemInner}>
+          <section className={styles.dataSection}>
+            {/* <span>Descripción:</span>
+            <input
+              id="Description"
+              type="text"
+              autoComplete="off"
+              onChange={(event) => handleInputChange(event)}
+            /> */}
+            <section
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <span style={{ marginBottom: "10%" }}>Tipo:</span>
+              <select
+                // defaultValue="-"
+                className={styles.select}
+                onChange={(event) => {
+                  setData({ ...data, Type: event.target.value });
+                }}
+              >
+                {/* <option disabled={true} value="-">
+                  -
+                </option> */}
+                <option value="Basket">Basket</option>
+                <option value="Futbol_5">Fútbol 5</option>
+                <option value="Futbol_11">Fútbol 11</option>
+                <option value="Tenis">Tenis</option>
+              </select>
+            </section>
 
-        <span>Precio:</span>
-        <input
-          id="Price"
-          type="text"
-          autoComplete="off"
-          onChange={(event) => handleInputChange(event)}
-        />
-      </section>
-      <div
-        style={{
-          marginTop: "10px",
-          border: "1px solid lightgray",
-          padding: "10px",
-          borderRadius: "5px",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-        }}
-        // onClick={() => document.getElementById("imageInput").click()}
-      >
-        Seleccionar Archivo
-        <input
-          type="file"
-          id="imageInput"
-          name="image"
-          accept="image/*"
-          /* style={{ display: "none" }} */
-          onChange={(event) => handleImagePreview(event)}
-        />
+            <section
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <span style={{ marginBottom: "10%" }}>Precio:</span>
+              <input
+                id="Price"
+                type="text"
+                autoComplete="off"
+                className={styles.input}
+                onChange={(event) => handleInputChange(event)}
+              />
+            </section>
+          </section>
+          <div
+            className={styles.selectImageContainer}
+            // onClick={() => document.getElementById("imageInput").click()}
+          >
+            Seleccionar Archivo
+            <input
+              type="file"
+              id="imageInput"
+              name="image"
+              accept="image/*"
+              /* style={{ display: "none" }} */
+              onChange={(event) => handleImagePreview(event)}
+            />
+          </div>
+          <h4>Vista Previa</h4>
+          <Card
+            parameters={{
+              data: {
+                Description: data.Description,
+                Type: data.Type,
+                Price: data.Price,
+                //Para la vista previa paso la miniatura. Para la carga, el File
+                ImgUrl: data.miniature,
+              },
+            }}
+          />
+          <section>
+            {/* <UploadImage file={data.ImgUrl} /> */}
+            <button onClick={() => uploadCard(data)}>Subir</button>
+            <Link to="/admin">
+              <button>Cancelar</button>
+            </Link>
+          </section>
+        </div>
       </div>
-      <h4>Vista Previa</h4>
-      <Card
-        parameters={{
-          data: {
-            Description: data.Description,
-            Type: data.Type,
-            Price: data.Price,
-            //Para la vista previa paso la miniatura. Para la carga, el File
-            ImgUrl: data.miniature,
-          },
-        }}
-      />
-      <section>
-        {/* <UploadImage file={data.ImgUrl} /> */}
-        <button onClick={() => uploadCard(data)}>Subir</button>
-        <Link to="/admin">
-          <button>Cancelar</button>
-        </Link>
-      </section>
     </div>
   );
 }
