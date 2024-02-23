@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "../../NavBar/NavBar";
 import Card from "../../Card/Card";
 import uploadCard from "../../../Utils/uploadCard";
 // import UploadImage from "../UploadImage/UploadImage";
@@ -45,9 +44,9 @@ export default function AddItem() {
 
   return (
     <div className={styles.addItemContainer}>
-      <NavBar />
       <div className={styles.addItemOuter}>
         <div className={styles.addItemInner}>
+          <h2 style={{ textAlign: "center", margin: 0 }}>Agregar Producto</h2>
           <section className={styles.dataSection}>
             {/* <span>Descripción:</span>
             <input
@@ -102,34 +101,44 @@ export default function AddItem() {
             className={styles.selectImageContainer}
             // onClick={() => document.getElementById("imageInput").click()}
           >
-            Seleccionar Archivo
-            <input
-              type="file"
-              id="imageInput"
-              name="image"
-              accept="image/*"
-              /* style={{ display: "none" }} */
-              onChange={(event) => handleImagePreview(event)}
-            />
+            <h4 style={{ margin: "0 0 10px 0" }}>Seleccionar Archivo</h4>
+            <section style={{ display: "flex", justifyContent: "center" }}>
+              <input
+                type="file"
+                id="imageInput"
+                name="image"
+                accept="image/*"
+                onChange={(event) => handleImagePreview(event)}
+              />
+            </section>
           </div>
-          <h4>Vista Previa</h4>
-          <Card
-            parameters={{
-              data: {
-                Description: data.Description,
-                Type: data.Type,
-                Price: data.Price,
-                //Para la vista previa paso la miniatura. Para la carga, el File
-                ImgUrl: data.miniature,
-              },
-            }}
-          />
+          <h4 style={{ margin: 0 }}>Vista Previa</h4>
+          <section className={styles.cardContainerInAdd}>
+            <Card
+              parameters={{
+                data: {
+                  Description: data.Description,
+                  Type: data.Type,
+                  Price: data.Price,
+                  //Para la vista previa paso la miniatura. Para la carga, el File
+                  ImgUrl: data.miniature,
+                },
+              }}
+            />
+          </section>
           <section>
             {/* <UploadImage file={data.ImgUrl} /> */}
-            <button onClick={() => uploadCard(data)}>Subir</button>
-            <Link to="/admin">
-              <button>Cancelar</button>
-            </Link>
+            <section className={styles.buttonSection}>
+              <button
+                className={styles.button}
+                onClick={() => uploadCard(data)}
+              >
+                Subir
+              </button>
+              <Link to="/admin" style={{ display: "contents" }}>
+                <button className={styles.button}>Cancelar</button>
+              </Link>
+            </section>
           </section>
         </div>
       </div>
