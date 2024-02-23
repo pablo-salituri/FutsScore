@@ -8,7 +8,7 @@ import styles from "./AddItem.module.css";
 export default function AddItem() {
   const [data, setData] = useState({
     Description: "",
-    Type: "-",
+    Type: "Basket",
     Price: null,
     ImgUrl: "",
     miniature: "",
@@ -131,7 +131,7 @@ export default function AddItem() {
             <section className={styles.buttonSection}>
               <button
                 className={styles.button}
-                onClick={() => uploadCard(data)}
+                onClick={() => uploadCard("carga", data)}
               >
                 Subir
               </button>

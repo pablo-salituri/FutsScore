@@ -1,10 +1,13 @@
 import { storage, firebaseApp } from "../Components/Firebase/credentials";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
+import Swal from "sweetalert2";
 import { v4 } from "uuid";
 
-export default function uploadCard({ImgUrl, Description, Type, Price}) {
+export default function uploadCard(action, {ImgUrl, Description, Type, Price}) {
   const firestore = getFirestore(firebaseApp);
+  // const infinitive = action === 'carga' ? 'cargar' : 'editar'
+  const participle = action === 'carga' ? 'cargado' : 'editado'
 
   async function createInFirestore(uid, url) {
     const docuRef = doc(firestore, `Cards/${uid}`);
@@ -23,7 +26,11 @@ export default function uploadCard({ImgUrl, Description, Type, Price}) {
   uploadBytes(imageRef, ImgUrl).then(() => {
     getDownloadURL(imageRef)
       .then((url) => {
-        createInFirestore(name, url).then(() => alert("Image uploaded"));
+        createInFirestore(name, url).then(() => Swal.fire({
+          title: `Artículo ${participle} correctamente`,
+          // text: "Artículo eliminado correctamente",
+          icon: "success",
+        }));
       })
       .catch((error) => {
         // Manejar errores si es necesario
