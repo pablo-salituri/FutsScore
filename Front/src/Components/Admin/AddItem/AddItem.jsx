@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Card from "../../Card/Card";
 import uploadCard from "../../../Utils/uploadCard";
 // import UploadImage from "../UploadImage/UploadImage";
 import styles from "./AddItem.module.css";
 
 export default function AddItem() {
+  const navigate = useNavigate();
+
   const [data, setData] = useState({
     Description: "",
     Type: "Basket",
@@ -40,6 +42,15 @@ export default function AddItem() {
     };
 
     reader.readAsDataURL(file);
+  };
+
+  const handleUpload = async () => {
+    try {
+      await uploadCard("carga", data);
+      navigate("/admin");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -129,10 +140,7 @@ export default function AddItem() {
           <section>
             {/* <UploadImage file={data.ImgUrl} /> */}
             <section className={styles.buttonSection}>
-              <button
-                className={styles.button}
-                onClick={() => uploadCard("carga", data)}
-              >
+              <button className={styles.button} onClick={() => handleUpload()}>
                 Subir
               </button>
               <Link to="/admin" style={{ display: "contents" }}>
