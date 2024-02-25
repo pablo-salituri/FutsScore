@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import NavBar from "../../NavBar/NavBar";
+import { Link, useNavigate } from "react-router-dom";
 import Card from "../../Card/Card";
 import uploadCard from "../../../Utils/uploadCard";
 // import UploadImage from "../UploadImage/UploadImage";
+import Swal from "sweetalert2";
 import styles from "./AddItem.module.css";
 
 export default function AddItem() {
+  const navigate = useNavigate();
+
   const [data, setData] = useState({
     Description: "",
-    Type: "-",
+    Type: "Basket",
     Price: null,
     ImgUrl: "",
     miniature: "",
@@ -43,82 +45,121 @@ export default function AddItem() {
     reader.readAsDataURL(file);
   };
 
+  const handleUpload = async () => {
+    try {
+      await uploadCard("carga", data);
+
+      Swal.fire({
+        title: "Artículo creado correctamente",
+        // text: "Artículo creado correctamente",
+        icon: "success",
+      }).then((okay) => {
+        if (okay) {
+          navigate("/admin");
+        }
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className={styles.addItemContainer}>
-      <NavBar />
-      <section>
-        {/* <span>Descripción:</span>
-        <input
-          id="Description"
-          type="text"
-          autoComplete="off"
-          onChange={(event) => handleInputChange(event)}
-        /> */}
-        <span>Tipo:</span>
-        <select
-          defaultValue="-"
-          onChange={(event) => {
-            setData({ ...data, Type: event.target.value });
-          }}
-        >
-          <option disabled={true} value="-">
-            -
-          </option>
-          <option value="Basket">Basket</option>
-          <option value="Futbol_5">Fútbol 5</option>
-          <option value="Futbol_11">Fútbol 11</option>
-          <option value="Tenis">Tenis</option>
-        </select>
+      <div className={styles.addItemOuter}>
+        <div className={styles.addItemInner}>
+          <h2 style={{ textAlign: "center", margin: 0 }}>Agregar Producto</h2>
+          <section className={styles.dataSection}>
+            {/* <span>Descripción:</span>
+            <input
+              id="Description"
+              type="text"
+              autoComplete="off"
+              onChange={(event) => handleInputChange(event)}
+            /> */}
+            <section
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <span style={{ marginBottom: "10%" }}>Tipo:</span>
+              <select
+                // defaultValue="-"
+                className={styles.select}
+                onChange={(event) => {
+                  setData({ ...data, Type: event.target.value });
+                }}
+              >
+                {/* <option disabled={true} value="-">
+                  -
+                </option> */}
+                <option value="Basket">Basket</option>
+                <option value="Futbol_5">Fútbol 5</option>
+                <option value="Futbol_11">Fútbol 11</option>
+                <option value="Tenis">Tenis</option>
+              </select>
+            </section>
 
-        <span>Precio:</span>
-        <input
-          id="Price"
-          type="text"
-          autoComplete="off"
-          onChange={(event) => handleInputChange(event)}
-        />
-      </section>
-      <div
-        style={{
-          marginTop: "10px",
-          border: "1px solid lightgray",
-          padding: "10px",
-          borderRadius: "5px",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-        }}
-        // onClick={() => document.getElementById("imageInput").click()}
-      >
-        Seleccionar Archivo
-        <input
-          type="file"
-          id="imageInput"
-          name="image"
-          accept="image/*"
-          /* style={{ display: "none" }} */
-          onChange={(event) => handleImagePreview(event)}
-        />
+            <section
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <span style={{ marginBottom: "10%" }}>Precio:</span>
+              <input
+                id="Price"
+                type="text"
+                autoComplete="off"
+                className={styles.input}
+                onChange={(event) => handleInputChange(event)}
+              />
+            </section>
+          </section>
+          <div
+            className={styles.selectImageContainer}
+            // onClick={() => document.getElementById("imageInput").click()}
+          >
+            <h4 style={{ margin: "0 0 10px 0" }}>Seleccionar Archivo</h4>
+            <section style={{ display: "flex", justifyContent: "center" }}>
+              <input
+                type="file"
+                id="imageInput"
+                name="image"
+                accept="image/*"
+                onChange={(event) => handleImagePreview(event)}
+              />
+            </section>
+          </div>
+          <h4 style={{ margin: 0 }}>Vista Previa</h4>
+          <section className={styles.cardContainerInAdd}>
+            <Card
+              parameters={{
+                data: {
+                  Description: data.Description,
+                  Type: data.Type,
+                  Price: data.Price,
+                  //Para la vista previa paso la miniatura. Para la carga, el File
+                  ImgUrl: data.miniature,
+                },
+              }}
+            />
+          </section>
+          <section>
+            {/* <UploadImage file={data.ImgUrl} /> */}
+            <section className={styles.buttonSection}>
+              <button className={styles.button} onClick={() => handleUpload()}>
+                Subir
+              </button>
+              <Link to="/admin" style={{ display: "contents" }}>
+                <button className={styles.button}>Cancelar</button>
+              </Link>
+            </section>
+          </section>
+        </div>
       </div>
-      <h4>Vista Previa</h4>
-      <Card
-        parameters={{
-          data: {
-            Description: data.Description,
-            Type: data.Type,
-            Price: data.Price,
-            //Para la vista previa paso la miniatura. Para la carga, el File
-            ImgUrl: data.miniature,
-          },
-        }}
-      />
-      <section>
-        {/* <UploadImage file={data.ImgUrl} /> */}
-        <button onClick={() => uploadCard(data)}>Subir</button>
-        <Link to="/admin">
-          <button>Cancelar</button>
-        </Link>
-      </section>
     </div>
   );
 }

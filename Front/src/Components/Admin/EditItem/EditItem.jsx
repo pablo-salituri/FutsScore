@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import NavBar from "../../NavBar/NavBar";
+// import NavBar from "../../NavBar/NavBar";
 import EditableCard from "../../Card/EditableCard/EditableCard";
 import { firebaseApp } from "../../Firebase/credentials";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
@@ -26,8 +26,15 @@ export default function EditItem() {
 
   return (
     <div className={styles.editItemContainer}>
-      <NavBar />
-      {cardInfo.data && <EditableCard parameters={cardInfo} />}
+      <div className={styles.editItemOuter}>
+        <div className={styles.editItemInner}>
+          <h2 style={{ textAlign: "center" }}>Editar artículo</h2>
+          <div className={styles.cardContainerInEdit}>
+            {/* <NavBar /> */}
+            {cardInfo.data && <EditableCard parameters={cardInfo} />}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
