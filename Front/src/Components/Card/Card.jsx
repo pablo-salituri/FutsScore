@@ -10,7 +10,7 @@ export default function Card({ parameters, handleDeleteCard }) {
     <div className={styles.cardContainer}>
       <section className={styles.imageContainer}>
         {location === "/admin" && (
-          <Link to={`/admin/editItem/${parameters.id}`}>
+          <Link to={`/admin/updateItem/${parameters.id}`}>
             <div className={styles.editContainer}>
               <MdModeEdit />
             </div>

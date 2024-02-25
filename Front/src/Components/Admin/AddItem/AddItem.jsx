@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Card from "../../Card/Card";
 import uploadCard from "../../../Utils/uploadCard";
 // import UploadImage from "../UploadImage/UploadImage";
+import Swal from "sweetalert2";
 import styles from "./AddItem.module.css";
 
 export default function AddItem() {
@@ -47,7 +48,16 @@ export default function AddItem() {
   const handleUpload = async () => {
     try {
       await uploadCard("carga", data);
-      navigate("/admin");
+
+      Swal.fire({
+        title: "Artículo creado correctamente",
+        // text: "Artículo creado correctamente",
+        icon: "success",
+      }).then((okay) => {
+        if (okay) {
+          navigate("/admin");
+        }
+      });
     } catch (error) {
       console.error(error);
     }

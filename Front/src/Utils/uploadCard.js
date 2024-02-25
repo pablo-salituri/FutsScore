@@ -8,7 +8,7 @@ export default function uploadCard(action, { ImgUrl, Description, Type, Price })
   return new Promise((resolve, reject) => {
     const firestore = getFirestore(firebaseApp);
     const infinitive = action === 'carga' ? 'cargar' : 'editar';
-    const participle = action === 'carga' ? 'cargado' : 'editado';
+    // const participle = action === 'carga' ? 'cargado' : 'editado';
 
     async function createInFirestore(uid, url) {
       const docuRef = doc(firestore, `Cards/${uid}`);
@@ -33,12 +33,12 @@ export default function uploadCard(action, { ImgUrl, Description, Type, Price })
       getDownloadURL(imageRef)
         .then((url) => {
           createInFirestore(name, url)
-            .then(() => {
+            /* .then(() => {
               Swal.fire({
                 title: `Artículo ${participle} correctamente`,
                 icon: "success",
               });
-            })
+            }) */
             .catch((error) => {
               Swal.fire({
                 title: `Error al ${infinitive} el artículo`,
