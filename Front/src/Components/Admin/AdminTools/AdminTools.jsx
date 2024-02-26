@@ -35,9 +35,7 @@ export default function AdminTools() {
     return false;
   }
 
-  const handleUpload = /* async */ () => {
-    // try {
-    // await uploadCard("carga", data);
+  const handleUpload = () => {
     Swal.fire({
       title: `¿${action} todos los precios ${
         percentage === "Otro:" ? input : percentage
@@ -50,10 +48,10 @@ export default function AdminTools() {
       confirmButtonText: "Confirmar",
       cancelButtonText: "Cancelar",
       allowOutsideClick: false,
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          updatePrices(
+          await updatePrices(
             cardList,
             action,
             percentage !== "Otro:" ? percentage : input
@@ -100,10 +98,6 @@ export default function AdminTools() {
           <h2 style={{ textAlign: "center", margin: 0 }}>Modificar Precios</h2>
           <section className={styles.upDownSection}>
             <div className={styles.iconContainer}>
-              {/* {cardList &&
-                cardList.map((card) => {
-                  console.log(card.data.Price);
-                })} */}
               <FaArrowAltCircleUp
                 className={styles.icon}
                 style={action === "Aumentar" ? { color: "#5af35a" } : {}}
