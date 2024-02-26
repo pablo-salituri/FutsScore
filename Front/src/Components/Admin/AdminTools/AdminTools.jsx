@@ -1,13 +1,18 @@
-import { useState } from "react";
-import { Link /* , useNavigate */ } from "react-router-dom";
-// import uploadCard from "../../../Utils/uploadCard";
-import Swal from "sweetalert2";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { firebaseApp } from "../../Firebase/credentials";
+import { getDocs, collection, getFirestore } from "firebase/firestore";
 import { FaArrowAltCircleDown, FaArrowAltCircleUp } from "react-icons/fa";
+import updatePrices from "../../../Utils/updatePrices";
+import Swal from "sweetalert2";
 import styles from "./AdminTools.module.css";
 
-export default function AdminTools() {
-  // const navigate = useNavigate();
+const firestore = getFirestore(firebaseApp);
 
+export default function AdminTools() {
+  const navigate = useNavigate();
+
+  const [cardList, setCardList] = useState([]);
   const [action, setAction] = useState(null);
   const [percentage, setPercentage] = useState(null);
   const [input, setInput] = useState("");
@@ -45,34 +50,48 @@ export default function AdminTools() {
       confirmButtonText: "Confirmar",
       cancelButtonText: "Cancelar",
       allowOutsideClick: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        try {
+          updatePrices(
+            cardList,
+            action,
+            percentage !== "Otro:" ? percentage : input
+          );
+          Swal.fire({
+            title: "Los precios se han modificado correctamente",
+            // text: "Artículo creado correctamente",
+            icon: "success",
+          }).then((okay) => {
+            if (okay) {
+              navigate("/admin");
+            }
+          });
+        } catch (error) {
+          Swal.fire({
+            title: "Error al modificar  los precios",
+            // text: "Error al eliminar el artículo",
+            icon: "error",
+          });
+        }
+      }
     });
-    /* .then((result) => {
-        if (result.isConfirmed) {
-          try {
-            handleSubmit();
-          } catch (error) {
-            Swal.fire({
-              title: "Error al modificar  el artículo",
-              // text: "Error al eliminar el artículo",
-              icon: "error",
-            });
-          }
-        }
-      }); */
-
-    /* Swal.fire({
-        title: "Artículo creado correctamente",
-        // text: "Artículo creado correctamente",
-        icon: "success",
-      }).then((okay) => {
-        if (okay) {
-          navigate("/admin");
-        }
-      }); */
-    /* } catch (error) {
-      console.error(error);
-    } */
   };
+
+  async function getDataFromFirestore() {
+    const querySnapshot = await getDocs(collection(firestore, "Cards"));
+    const newData = querySnapshot.docs.map((doc) => {
+      return {
+        data: doc.data(),
+        id: doc.id,
+      };
+    });
+    setCardList(newData);
+  }
+
+  useEffect(() => {
+    getDataFromFirestore();
+  }, []);
 
   return (
     <div className={styles.adminToolsContainer}>
@@ -81,6 +100,10 @@ export default function AdminTools() {
           <h2 style={{ textAlign: "center", margin: 0 }}>Modificar Precios</h2>
           <section className={styles.upDownSection}>
             <div className={styles.iconContainer}>
+              {/* {cardList &&
+                cardList.map((card) => {
+                  console.log(card.data.Price);
+                })} */}
               <FaArrowAltCircleUp
                 className={styles.icon}
                 style={action === "Aumentar" ? { color: "#5af35a" } : {}}
@@ -130,7 +153,7 @@ export default function AdminTools() {
                 onClick={() => handleUpload()}
                 disabled={checkDisabled()}
               >
-                Subir
+                Modificar
               </button>
               <Link to="/admin" style={{ display: "contents" }}>
                 <button className={styles.button}>Cancelar</button>
