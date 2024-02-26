@@ -82,9 +82,11 @@ export default function Home() {
       )}
 
       {location === "Not Home" && (
-        <div className={styles.toolContainer}>
-          <AiFillTool className={styles.icon} />
-        </div>
+        <Link to="/admin/AdminTools" style={{ display: "contents" }}>
+          <div className={styles.toolContainer}>
+            <AiFillTool className={styles.icon} />
+          </div>
+        </Link>
       )}
       {cardList.map((card) => {
         if (
