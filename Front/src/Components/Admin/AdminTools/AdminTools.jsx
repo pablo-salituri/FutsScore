@@ -20,7 +20,7 @@ export default function AdminTools() {
   const custom = ["5", "10", "15", "20", "Otro:"];
 
   function handleInputChange(value) {
-    const regex = /^[0-9]+$/;
+    const regex = /^[1-9][0-9]*$/;
     if (regex.test(value) || value === "") {
       setInput(
         // El parseFloat es porque sino toma el contenido como string y no filtra correctamente

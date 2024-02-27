@@ -12,7 +12,7 @@ export default function AddItem() {
   const [data, setData] = useState({
     Description: "",
     Type: "Basket",
-    Price: null,
+    Price: "",
     ImgUrl: "",
     miniature: "",
   });
@@ -23,9 +23,12 @@ export default function AddItem() {
   }
 
   function handleInputChange(event) {
+    const regex = /^[0-9]+$/;
     const field = event.target.id;
     const value = event.target.value;
-    setData({ ...data, [field]: value });
+    if (regex.test(value) || value === "") {
+      setData({ ...data, [field]: value });
+    }
   }
 
   const handleImagePreview = (event) => {
@@ -118,9 +121,10 @@ export default function AddItem() {
               <input
                 id="Price"
                 type="text"
-                autoComplete="off"
                 className={styles.input}
+                value={data.Price}
                 onChange={(event) => handleInputChange(event)}
+                autoComplete="off"
               />
             </section>
           </section>
