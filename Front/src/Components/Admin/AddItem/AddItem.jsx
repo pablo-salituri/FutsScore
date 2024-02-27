@@ -17,6 +17,11 @@ export default function AddItem() {
     miniature: "",
   });
 
+  function checkDisabled() {
+    if (!data.Price || !data.miniature) return true;
+    else return false;
+  }
+
   function handleInputChange(event) {
     const field = event.target.id;
     const value = event.target.value;
@@ -46,6 +51,7 @@ export default function AddItem() {
   };
 
   const handleUpload = async () => {
+    console.log("hola");
     try {
       await uploadCard("carga", data);
 
@@ -150,8 +156,13 @@ export default function AddItem() {
           <section>
             {/* <UploadImage file={data.ImgUrl} /> */}
             <section className={styles.buttonSection}>
-              <button className={styles.button} onClick={() => handleUpload()}>
-                Subir
+              <button
+                className={styles.button}
+                style={checkDisabled() ? { backgroundColor: "#9a7d9a" } : {}}
+                onClick={() => handleUpload()}
+                disabled={checkDisabled()}
+              >
+                Cargar
               </button>
               <Link to="/admin" style={{ display: "contents" }}>
                 <button className={styles.button}>Cancelar</button>

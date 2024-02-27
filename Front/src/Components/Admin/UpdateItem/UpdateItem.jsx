@@ -217,7 +217,11 @@ export default function UpdateItem() {
             <section className={styles.buttonSection}>
               <button
                 className={styles.button}
+                style={
+                  !cardInfo.data.Price ? { backgroundColor: "#9a7d9a" } : {}
+                }
                 onClick={() => handleConfirmation()}
+                disabled={!cardInfo.data.Price}
               >
                 Guardar cambios
               </button>

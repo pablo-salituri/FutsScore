@@ -144,6 +144,7 @@ export default function AdminTools() {
             <section className={styles.buttonSection}>
               <button
                 className={styles.button}
+                style={checkDisabled() ? { backgroundColor: "#9a7d9a" } : {}}
                 onClick={() => handleUpload()}
                 disabled={checkDisabled()}
               >
