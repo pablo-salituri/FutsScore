@@ -3,8 +3,8 @@ import MainPage from "./Components/MainPage/MainPage";
 import Login from "./Components/Login/Login";
 import Admin from "./Components/Admin/Admin";
 import AddItem from "./Components/Admin/AddItem/AddItem";
-// import EditItem from "./Components/Admin/EditItem/EditItem";
 import UpdateItem from "./Components/Admin/UpdateItem/UpdateItem";
+import AdminTools from "./Components/Admin/AdminTools/AdminTools";
 // import "./App.css";
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/addItem" element={<AddItem />} />
         <Route path="/admin/updateItem/:id" element={<UpdateItem />} />
+        <Route path="/admin/AdminTools" element={<AdminTools />} />
         {/* <Route path="/properties/:id" element={<Detail />} /> */}
 
         {/* <Route path="*" element={<UnknownRoute />} /> */}
