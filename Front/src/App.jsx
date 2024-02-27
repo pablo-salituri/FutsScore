@@ -5,6 +5,7 @@ import Admin from "./Components/Admin/Admin";
 import AddItem from "./Components/Admin/AddItem/AddItem";
 import UpdateItem from "./Components/Admin/UpdateItem/UpdateItem";
 import AdminTools from "./Components/Admin/AdminTools/AdminTools";
+import ProtectedRoutes from "./Components/Firebase/ProtectedRoutes";
 // import "./App.css";
 
 function App() {
@@ -23,20 +24,15 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/addItem" element={<AddItem />} />
-        <Route path="/admin/updateItem/:id" element={<UpdateItem />} />
-        <Route path="/admin/AdminTools" element={<AdminTools />} />
-        {/* <Route path="/properties/:id" element={<Detail />} /> */}
 
         {/* <Route path="*" element={<UnknownRoute />} /> */}
 
-        {/* <Route element={<ProtectedRoutes allowedRoles={["admin", 'editor']} />}>
-          <Route path="/admin" element={<HomeDash />} />
-          <Route path="/admin/editarPropiedad/:id" element={<EditPropertyForm />} />
-          <Route path="/admin/crearPropiedad" element={<CreateForm/>} />
-          <Route path="/admin/datosPersonales" element={<PersonalData/>} />
-        </Route> */}
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/addItem" element={<AddItem />} />
+          <Route path="/admin/updateItem/:id" element={<UpdateItem />} />
+          <Route path="/admin/AdminTools" element={<AdminTools />} />
+        </Route>
       </Routes>
       {/* </div> */}
       {/* {!location.pathname.includes('/admin') && <Footer />} */}
