@@ -9,8 +9,13 @@ const ProtectedRoutes = () => {
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
-    setIsLogged(checkIfLogged);
-    setIsLoading(true);
+    const fetchData = async () => {
+      const loggedIn = await checkIfLogged();
+      setIsLogged(loggedIn);
+      setIsLoading(false);
+    };
+
+    fetchData();
   }, []);
 
   switch (true) {

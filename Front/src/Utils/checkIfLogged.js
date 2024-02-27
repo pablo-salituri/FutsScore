@@ -1,9 +1,11 @@
 import { getAuth } from "firebase/auth";
 
-export default function checkIfLogged() {
-    const auth = getAuth();
-    const user = auth.currentUser;
-
-    if (user) console.log(true)
-    else console.log(false);
+export default async function checkIfLogged() {
+    return new Promise((resolve)=> {
+        const auth = getAuth();
+        const user = auth.currentUser;
+    
+        if (user) resolve(true)
+        else resolve(false);
+    })
 }
