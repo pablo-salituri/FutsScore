@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import PriceFilter from "../Filter/PriceFilter";
 import { handleSportFilter } from "../../Redux/actions";
 import styles from "./LargeSideBar.module.css";
@@ -39,6 +40,18 @@ export default function LargeSideBar() {
       </section>
       <section>
         <PriceFilter />
+      </section>
+      <section className={styles.tools}>
+        <Link to="/admin/addItem" style={{ display: "contents" }}>
+          <button className={styles.button}>
+            Cargar Ítem
+          </button>
+        </Link>
+        <Link to="/admin/AdminTools" style={{ display: "contents" }}>
+          <button className={styles.button}>
+            Configuración
+          </button>
+        </Link>
       </section>
     </div>
   );
