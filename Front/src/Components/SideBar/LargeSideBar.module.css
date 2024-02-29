@@ -5,6 +5,7 @@
         background-position: center;
         /* background-color: pink; */
         width: 20%;
+        box-sizing: border-box;
     }
 }
   

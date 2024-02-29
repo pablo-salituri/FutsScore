@@ -21,10 +21,11 @@
         flex-wrap: wrap;
         justify-content: space-around;
         gap: 5vh;
-        padding: 3vh 11vh 4vh;
+        padding: 3vh 1vh;
         overflow: auto;
         border-top: 2px solid white;
         border-left: 2px solid white;
+        box-sizing: border-box;
     }
 
     .uploadContainer {

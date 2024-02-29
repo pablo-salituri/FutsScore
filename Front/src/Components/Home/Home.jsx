@@ -17,6 +17,7 @@ const firestore = getFirestore(firebaseApp);
 export default function Home() {
   const location = useLocation().pathname === "/" ? "Home" : "Not Home";
 
+  const [width, setWidth] = useState(window.innerWidth);
   const [cardList, setCardList] = useState([]);
   const [render, setRender] = useState(false); //Sólo sirve para forzar el re-render despues de eliminar un artículo
 
@@ -78,9 +79,22 @@ export default function Home() {
     fetchData();
   }, [render]);
 
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className={styles.homeContainer}>
-      {location === "Not Home" && (
+      {location === "Not Home" && width < 1025 && (
         <Link to="/admin/addItem" style={{ display: "contents" }}>
           <div className={styles.uploadContainer}>
             <IoMdCloudUpload className={styles.icon} />
@@ -88,7 +102,7 @@ export default function Home() {
         </Link>
       )}
 
-      {location === "Not Home" && (
+      {location === "Not Home" && width < 1025 &&(
         <Link to="/admin/AdminTools" style={{ display: "contents" }}>
           <div className={styles.toolContainer}>
             <AiFillTool className={styles.icon} />
