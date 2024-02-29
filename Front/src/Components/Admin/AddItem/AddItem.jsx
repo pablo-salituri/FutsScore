@@ -12,15 +12,23 @@ export default function AddItem() {
   const [data, setData] = useState({
     Description: "",
     Type: "Basket",
-    Price: null,
+    Price: "",
     ImgUrl: "",
     miniature: "",
   });
 
+  function checkDisabled() {
+    if (!data.Price || !data.miniature) return true;
+    else return false;
+  }
+
   function handleInputChange(event) {
+    const regex = /^[0-9]+$/;
     const field = event.target.id;
     const value = event.target.value;
-    setData({ ...data, [field]: value });
+    if (regex.test(value) || value === "") {
+      setData({ ...data, [field]: value });
+    }
   }
 
   const handleImagePreview = (event) => {
@@ -46,6 +54,7 @@ export default function AddItem() {
   };
 
   const handleUpload = async () => {
+    console.log("hola");
     try {
       await uploadCard("carga", data);
 
@@ -112,9 +121,10 @@ export default function AddItem() {
               <input
                 id="Price"
                 type="text"
-                autoComplete="off"
                 className={styles.input}
+                value={data.Price}
                 onChange={(event) => handleInputChange(event)}
+                autoComplete="off"
               />
             </section>
           </section>
@@ -150,8 +160,13 @@ export default function AddItem() {
           <section>
             {/* <UploadImage file={data.ImgUrl} /> */}
             <section className={styles.buttonSection}>
-              <button className={styles.button} onClick={() => handleUpload()}>
-                Subir
+              <button
+                className={styles.button}
+                style={checkDisabled() ? { backgroundColor: "#9a7d9a" } : {}}
+                onClick={() => handleUpload()}
+                disabled={checkDisabled()}
+              >
+                Cargar
               </button>
               <Link to="/admin" style={{ display: "contents" }}>
                 <button className={styles.button}>Cancelar</button>

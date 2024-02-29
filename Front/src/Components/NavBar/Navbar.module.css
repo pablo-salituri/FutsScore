@@ -35,6 +35,22 @@
         justify-content: space-around;
     }
 
+    .leftSection, .rightSection {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .middleSection {
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .img {
         height: 85%;
     }
@@ -47,8 +63,11 @@
     }
 
     .button {
-        background-color: #17dd94;
-        width: 10vh;
+        background-color: rgb(243,125,83);
+        color: white;
+        padding: 1vh;
+        border-radius: 10px;
+        border: 1px solid white;
     }
 } 
 

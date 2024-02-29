@@ -23,13 +23,26 @@
 }
   
 @media (min-width: 769px) and (max-width: 1024px) {
-    .footerContainer {
+    /* .footerContainer {
         background-color: yellowgreen;
         height: 10%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0 5%;
+    } */
+
+    .footerContainer {
+        background-color: rgba(191,191,191,0.2);
+        height: 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5%;
+    }
+
+    .middleSection {
+        color: white;
     }
 } 
 

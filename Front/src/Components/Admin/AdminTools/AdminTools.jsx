@@ -20,7 +20,7 @@ export default function AdminTools() {
   const custom = ["5", "10", "15", "20", "Otro:"];
 
   function handleInputChange(value) {
-    const regex = /^[0-9]+$/;
+    const regex = /^[1-9][0-9]*$/;
     if (regex.test(value) || value === "") {
       setInput(
         // El parseFloat es porque sino toma el contenido como string y no filtra correctamente
@@ -95,7 +95,7 @@ export default function AdminTools() {
     <div className={styles.adminToolsContainer}>
       <div className={styles.adminToolsOuter}>
         <div className={styles.adminToolsInner}>
-          <h2 style={{ textAlign: "center", margin: 0 }}>Modificar Precios</h2>
+          <h2 className={styles.title}>Modificar Precios</h2>
           <section className={styles.upDownSection}>
             <div className={styles.iconContainer}>
               <FaArrowAltCircleUp
@@ -113,7 +113,7 @@ export default function AdminTools() {
             </div>
           </section>
           {custom.map((elem) => (
-            <section key={elem}>
+            <section key={elem} className={styles.selectSection}>
               <label>
                 <input
                   type="radio"
@@ -144,6 +144,7 @@ export default function AdminTools() {
             <section className={styles.buttonSection}>
               <button
                 className={styles.button}
+                style={checkDisabled() ? { backgroundColor: "#9a7d9a" } : {}}
                 onClick={() => handleUpload()}
                 disabled={checkDisabled()}
               >

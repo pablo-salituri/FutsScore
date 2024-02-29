@@ -28,9 +28,12 @@ export default function UpdateItem() {
     : cardInfo;
 
   function handleInputChange(event) {
+    const regex = /^[0-9]+$/;
     const field = event.target.id;
     const value = event.target.value;
-    setCardInfo({ ...cardInfo, data: { ...cardInfo.data, [field]: value } });
+    if (regex.test(value) || value === "") {
+      setCardInfo({ ...cardInfo, data: { ...cardInfo.data, [field]: value } });
+    }
   }
 
   const handleImagePreview = (event) => {
@@ -217,7 +220,11 @@ export default function UpdateItem() {
             <section className={styles.buttonSection}>
               <button
                 className={styles.button}
+                style={
+                  !cardInfo.data.Price ? { backgroundColor: "#9a7d9a" } : {}
+                }
                 onClick={() => handleConfirmation()}
+                disabled={!cardInfo.data.Price}
               >
                 Guardar cambios
               </button>
