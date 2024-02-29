@@ -41,7 +41,7 @@ export default function LargeSideBar() {
       <section>
         <PriceFilter />
       </section>
-      <section className={styles.tools}>
+      {location === "Not Home" && <section className={styles.tools}>
         <Link to="/admin/addItem" style={{ display: "contents" }}>
           <button className={styles.button}>
             Cargar Ítem
@@ -52,7 +52,7 @@ export default function LargeSideBar() {
             Configuración
           </button>
         </Link>
-      </section>
+      </section>}
     </div>
   );
 }
