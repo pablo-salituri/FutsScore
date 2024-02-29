@@ -1,6 +1,7 @@
 @media (min-width: 1025px) {
     .footerContainer {
-        background-color: yellowgreen;
+        background-color: rgba(191,191,191,0.2);
+        color: white;
         height: 8%;
         display: flex;
         justify-content: space-between;
