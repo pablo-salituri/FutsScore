@@ -16,6 +16,7 @@
 
     .homeContainer {
         width: 80%;
+        position: relative;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
@@ -28,8 +29,8 @@
 
     .uploadContainer {
         background-color: #9a349a;
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
         position: absolute;
         left: 2.5vh;
         display: flex;
@@ -59,8 +60,8 @@
     }
 
     .cardContainerInHome {
-        width: 32vh;
-        height: 28vh;
+        width: 33vh;
+        height: 29vh;
         background-color: rgb(181 181 181 / 61%);
         border: 2px solid white;
         border-radius: 15px;
@@ -84,8 +85,8 @@
 
     .uploadContainer {
         background-color: #9a349a;
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
         position: absolute;
         left: 2.5vh;
         display: flex;
@@ -139,8 +140,8 @@
 
     .uploadContainer {
         background-color: #9a349a;
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
         position: absolute;
         left: 2.5vh;
         display: flex;
