@@ -95,7 +95,7 @@ export default function AdminTools() {
     <div className={styles.adminToolsContainer}>
       <div className={styles.adminToolsOuter}>
         <div className={styles.adminToolsInner}>
-          <h2 style={{ textAlign: "center", margin: 0 }}>Modificar Precios</h2>
+          <h2 className={styles.title}>Modificar Precios</h2>
           <section className={styles.upDownSection}>
             <div className={styles.iconContainer}>
               <FaArrowAltCircleUp
@@ -113,7 +113,7 @@ export default function AdminTools() {
             </div>
           </section>
           {custom.map((elem) => (
-            <section key={elem}>
+            <section key={elem} className={styles.selectSection}>
               <label>
                 <input
                   type="radio"
