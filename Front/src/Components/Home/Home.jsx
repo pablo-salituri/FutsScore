@@ -8,6 +8,7 @@ import deleteRecordFS from "../../Utils/deleteRecordFS";
 import deleteImage from "../../Utils/deleteImage";
 import { IoMdCloudUpload } from "react-icons/io";
 import { AiFillTool } from "react-icons/ai";
+import checkIfLogged from "../../Utils/checkIfLogged";
 import Swal from "sweetalert2";
 import styles from "./Home.module.css";
 
@@ -69,6 +70,12 @@ export default function Home() {
 
   useEffect(() => {
     getDataFromFirestore();
+
+    async function fetchData() {
+      const answer = await checkIfLogged();
+      console.log(answer);
+    }
+    fetchData();
   }, [render]);
 
   return (
