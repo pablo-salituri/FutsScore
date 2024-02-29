@@ -20,9 +20,23 @@
         height: 100%;
         top: 0;
     }
+
+    .headerBackground {
+        /* background-color: red; */
+        background-image: url('../../assets//Pista_Tenis.JPG');
+        width: 100%;
+        height: 18.9%;
+        position: absolute;
+        color: transparent;
+        z-index: -1;
+        background-size: 100% auto; /* Escala la imagen para ajustarse al ancho del contenedor */
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.8;
+    }
     
     .body {
-        background-color: aqua;
+        /* background-color: aqua; */
         display: flex;
         flex-direction: column;
         height: 78%;
