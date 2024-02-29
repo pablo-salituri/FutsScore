@@ -4,7 +4,10 @@
 
 @media (min-width: 1025px) {
     .navBarContainer {
-        height: 12%;
+        background-image: url('../../assets/Pista_Tenis.JPG');
+        background-size: cover;
+        background-position: center;
+        height: 14%;
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -58,7 +61,7 @@
     .title {
         font-style: italic;
         font-weight: bold;
-        font-size: 2.5em;
+        font-size: 3.2em;
         color: white;
     }
 

@@ -45,7 +45,7 @@ export default function NavBar() {
       </section>
 
       <section className={styles.middleSection}>
-        <span className={styles.title}>FuttScore</span>
+        <span className={styles.title}>FutsScore</span>
       </section>
 
       <section className={styles.rightSection}>
