@@ -24,7 +24,7 @@ export default function Admin() {
 
   return (
     <div className={styles.adminContainer}>
-      <div className={styles.headerBackground}>A</div>
+      {width < 1025 && <div className={styles.headerBackground}>A</div>}
       <NavBar />
       <section className={styles.body}>
         {width < 1025 ? <SmallSideBar /> : <LargeSideBar />}
