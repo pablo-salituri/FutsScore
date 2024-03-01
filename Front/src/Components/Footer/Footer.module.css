@@ -1,6 +1,12 @@
+.footerContainer {
+    border-top: 2px solid white;
+}
+
 @media (min-width: 1025px) {
     .footerContainer {
         background-color: rgba(191,191,191,0.2);
+        background-color: #0086c2;
+        background-color: rgba(0,134,194,0.72);
         color: white;
         height: 8%;
         display: flex;
@@ -35,6 +41,8 @@
 
     .footerContainer {
         background-color: rgba(191,191,191,0.2);
+        background-color: #0086c2;
+        background-color: rgba(0,134,194,0.72);
         height: 10%;
         display: flex;
         justify-content: space-between;
@@ -50,6 +58,8 @@
 @media (max-width: 768px) {
     .footerContainer {
         background-color: rgba(191,191,191,0.2);
+        background-color: #0086c2;
+        background-color: rgba(0,134,194,0.72);
         height: 10%;
         display: flex;
         justify-content: space-between;

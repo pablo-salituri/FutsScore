@@ -15,7 +15,7 @@ export default function LargeSideBar() {
   return (
     <div className={styles.sideBarContainer}>
       <section className={styles.filterSection}>
-        <table className={styles.filterContainer}>
+        <table /* className={styles.filterContainer} */>
           <tbody>
             {Object.entries(filter.sports).map(([sportName, value]) => {
               const sanitizedSportName = sportName.includes("_")

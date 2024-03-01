@@ -1,19 +1,4 @@
 @media (min-width: 1025px) {
-    /* .homeContainer {
-        width: 80%;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 3vh 2.5vh;
-        padding: 3vh;
-        border-top: 2px solid white;
-        border-left: 2px solid white;
-        overflow: auto;
-    }
-
-    .cardContainerInHome {
-        height: 100%;
-    } */
-
     .homeContainer {
         width: 80%;
         position: relative;
@@ -117,8 +102,8 @@
     }
 
     .cardContainerInHome {
-        width: 37vh;
-        height: 32vh;
+        width: 33vh;
+        height: 30vh;
         background-color: rgb(181 181 181 / 61%);
         border: 2px solid white;
         border-radius: 15px;
