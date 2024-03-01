@@ -12,6 +12,33 @@
         box-sizing: border-box;
     }
 
+    .filterSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.3em;
+    }
+
+    .filterContainer {
+        background-color: rgba(250,250,250,0.8);
+        padding: 5% 10%;
+        border-radius: 10px;
+        border: 1px solid black;
+    }
+
+    .priceFilterInSideBar {
+        background-color: rgba(250,250,250,0.8);
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        margin: 0 auto;
+        padding: 6%;
+        border-radius: 10px;
+        border: 1px solid black;
+        font-size: 1.3em;
+    }
+
     .tools {
         width: 100%;
         height: 20%;
@@ -62,54 +89,3 @@
 
     
 }
-  
-/* @media (min-width: 769px) and (max-width: 1024px) {
-    .sideBarContainer {
-        background-color: pink;
-        height: 10%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .iconContainer {
-        background-color: #17dd94;
-        height: 70%;
-        border-radius: 50%;
-        aspect-ratio: 1/1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .icon {
-        width: 70%;
-        height: 70%;
-    }
-} 
-
-
-@media (max-width: 768px) {
-    .sideBarContainer {
-        background-color: pink;
-        height: 10%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .iconContainer {
-        background-color: #17dd94;
-        height: 70%;
-        border-radius: 50%;
-        aspect-ratio: 1/1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .icon {
-        width: 70%;
-        height: 70%;
-    }
-} */
