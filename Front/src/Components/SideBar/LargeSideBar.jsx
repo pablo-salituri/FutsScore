@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, Link } from "react-router-dom";
 import PriceFilter from "../Filter/PriceFilter";
@@ -15,8 +14,8 @@ export default function LargeSideBar() {
 
   return (
     <div className={styles.sideBarContainer}>
-      <section>
-        <table>
+      <section className={styles.filterSection}>
+        <table /* className={styles.filterContainer} */>
           <tbody>
             {Object.entries(filter.sports).map(([sportName, value]) => {
               const sanitizedSportName = sportName.includes("_")
@@ -38,21 +37,19 @@ export default function LargeSideBar() {
           </tbody>
         </table>
       </section>
-      <section>
+      <section className={styles.priceFilterInSideBar}>
         <PriceFilter />
       </section>
-      {location === "Not Home" && <section className={styles.tools}>
-        <Link to="/admin/addItem" style={{ display: "contents" }}>
-          <button className={styles.button}>
-            Cargar Ítem
-          </button>
-        </Link>
-        <Link to="/admin/AdminTools" style={{ display: "contents" }}>
-          <button className={styles.button}>
-            Configuración
-          </button>
-        </Link>
-      </section>}
+      {location === "Not Home" && (
+        <section className={styles.tools}>
+          <Link to="/admin/addItem" style={{ display: "contents" }}>
+            <button className={styles.button}>Cargar Ítem</button>
+          </Link>
+          <Link to="/admin/AdminTools" style={{ display: "contents" }}>
+            <button className={styles.button}>Configuración</button>
+          </Link>
+        </section>
+      )}
     </div>
   );
 }
