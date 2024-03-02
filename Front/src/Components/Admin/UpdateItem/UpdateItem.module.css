@@ -14,6 +14,106 @@ input[type=file]::file-selector-button {
   }
 
 
+
+@media (min-width: 1025px) {
+    .addItemContainer {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        color: white;
+    }
+
+    .addItemOuter {
+        /* background-color: silver; */
+        width: 90%;
+        height: 88%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+    
+    .addItemInner {
+        background-color: rgba(192, 192, 192, 0.34);
+        width: 90%;
+        max-width: 630px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.3em;
+        border: 2px solid white;
+        padding: 4% 5%;
+        border-radius: 10px;
+    }
+
+    .dataSection {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    .select {
+        background-color: #dadada;
+        width: 8em;
+        height: 37px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .input {
+        background-color: transparent;
+        color: white;
+        width: 8em;
+        height: 37px;
+        border: none;
+        box-sizing: border-box;
+        font-size: 1.1em;
+        text-align: center;
+        border-bottom: 1px solid white;
+    }
+
+    .selectImageContainer {
+        cursor: pointer;
+    }
+
+    .cardContainerInAdd {
+        width: 37vh;
+        height: 32vh;
+        background-color: rgb(181 181 181 / 61%);
+        color: black;
+        border: 2px solid white;
+        border-radius: 15px;
+        padding: 10px;
+        margin: auto;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    }
+
+    .buttonSection {
+        display: flex;
+        justify-content: space-evenly;
+        /* margin-top: 10%; */
+    }
+
+    .button {
+        background-color: #9a349a;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 8%;
+        border: 1px solid silver;
+        width: 25%;
+        height: 2.8em;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+    /* .input:focus {
+        border: red;
+    } */
+}
+
+
 @media (min-width: 769px) and (max-width: 1024px) {
     .addItemContainer {
         display: flex;
