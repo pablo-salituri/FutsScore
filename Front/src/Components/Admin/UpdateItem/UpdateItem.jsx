@@ -146,7 +146,7 @@ export default function UpdateItem() {
     <div className={styles.addItemContainer}>
       <div className={styles.addItemOuter}>
         <div className={styles.addItemInner}>
-          <h2 style={{ textAlign: "center", margin: 0 }}>Editar Producto</h2>
+          <h2 className={styles.title}>Editar Producto</h2>
           <section className={styles.dataSection}>
             {/* <span>Descripción:</span>
             <input
