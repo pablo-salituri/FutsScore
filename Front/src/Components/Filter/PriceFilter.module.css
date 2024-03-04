@@ -20,9 +20,10 @@
     .button {
         color: white;
         font-weight: bold;
-        width: 50%;
+        width: 55%;
+        max-width: 95px;
         aspect-ratio: 2.2/1;
-        font-size: 0.8rem;
+        font-size: min(1.3vw, 0.9em);
         border-radius: 8px;
         border: 1px solid black;
     }
