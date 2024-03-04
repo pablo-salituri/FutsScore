@@ -72,6 +72,10 @@
         border-radius: 10px;
         border: 1px solid white;
     }
+
+    .button:hover {
+        cursor: pointer;
+    }
 }
   
 @media (min-width: 769px) and (max-width: 1024px) {

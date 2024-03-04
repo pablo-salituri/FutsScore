@@ -48,8 +48,16 @@
         height: 100%;
     }
 
+    .icon:hover {
+        cursor: pointer;
+    }
+
     .selectSection {
         font-size: 1.2em;
+    }
+
+    .label:hover {
+        cursor: pointer;
     }
 
     .input {
@@ -93,6 +101,10 @@
         height: 2.5em;
         font-weight: bold;
         border-radius: 10px;
+    }
+
+    .button:hover {
+        cursor: pointer;
     }
     /* .input:focus {
         border: red;

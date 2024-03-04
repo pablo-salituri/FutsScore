@@ -50,6 +50,10 @@
         align-items: center;
     }
 
+    .deleteContainer:hover {
+        cursor: pointer;
+    }
+
     .description, .type {
         background-color: #ffeed5;
         height: 10%;

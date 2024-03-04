@@ -68,6 +68,10 @@
         height: 75%;
     }
 
+    .eyeIcon:hover {
+        cursor: pointer;
+    }
+
     .button {
         background-color: #9a349a;
         color: white;
@@ -82,8 +86,20 @@
         border-radius: 10px;
     }
 
+    .button:hover {
+        cursor: pointer;
+    }
+
     .icon {
         scale: 1.3;
+    }
+
+    .recover {
+        text-decoration: underline;
+    }
+
+    .recover:hover {
+        cursor: pointer;
     }
 }
 
@@ -174,6 +190,10 @@
     .icon {
         scale: 1.3;
     }
+
+    .recover {
+        text-decoration: underline;
+    }
 }
 
 @media (max-width: 768px) {
@@ -262,5 +282,9 @@
 
     .icon {
         scale: 1.3;
+    }
+
+    .recover {
+        text-decoration: underline;
     }
 }

@@ -117,10 +117,7 @@ export default function Login() {
           <FaArrowCircleLeft className={styles.icon} /> Volver
         </button>
 
-        <span
-          style={{ textDecoration: "underline" }}
-          onClick={handleRecuperation}
-        >
+        <span className={styles.recover} onClick={handleRecuperation}>
           Recuperar Contraseña
         </span>
       </section>
