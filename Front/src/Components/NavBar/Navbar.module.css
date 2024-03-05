@@ -3,31 +3,6 @@
 } */
 
 @media (min-width: 1025px) {
-    /* .navBarContainer {
-        background-image: url('../../assets/Pista_Tenis.JPG');
-        background-size: cover;
-        background-position: center;
-        height: 14%;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-
-    .img {
-        height: 85%;
-    }
-
-    .title {
-        font-style: italic;
-        font-weight: bold;
-        font-size: 2.5em;
-        color: white;
-    }
-
-    .button {
-        background-color: #17dd94;
-        width: 10vh;
-    } */
     .navBarContainer {
         background-image: url('../../assets/Pista_Tenis.JPG');
         background-size: cover;
@@ -36,6 +11,7 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
+        user-select: none;
     }
 
     .leftSection, .rightSection {
@@ -71,6 +47,10 @@
         padding: 1vh;
         border-radius: 10px;
         border: 1px solid white;
+    }
+
+    .button:hover {
+        cursor: pointer;
     }
 }
   

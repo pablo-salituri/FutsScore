@@ -20,6 +20,7 @@
         border-radius: 10px;
         border: 1px solid black;
         font-size: 1.1em;
+        user-select: none;
     }
 
     .filterContainer {
@@ -38,6 +39,7 @@
         border-radius: 10px;
         border: 1px solid black;
         font-size: 1.1em;
+        user-select: none;
     }
 
     .tools {
@@ -48,6 +50,7 @@
         align-items: center;
         justify-content: space-evenly;
         row-gap: 10%;
+        user-select: none;
     }
 
     .button {
@@ -58,10 +61,16 @@
         justify-content: center;
         column-gap: 8%;
         border: 1px solid silver;
-        width: 42%;
-        height: 32%;
-        font-size: 0.85em;
+        width: 55%;
+        max-width: 130px;
+        height: 34%;
+        /* font-size: 0.85em; */
+        font-size: min(1.4vw, 0.9em);
         font-weight: bold;
         border-radius: 10px;
+    }
+
+    .button:hover {
+        cursor: pointer;
     }
 }

@@ -114,7 +114,7 @@ export default function AdminTools() {
           </section>
           {custom.map((elem) => (
             <section key={elem} className={styles.selectSection}>
-              <label>
+              <label className={styles.label}>
                 <input
                   type="radio"
                   value={elem}

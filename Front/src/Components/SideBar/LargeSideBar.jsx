@@ -23,14 +23,17 @@ export default function LargeSideBar() {
                 : sportName;
 
               return (
-                <tr
-                  key={sportName}
-                  onClick={() =>
-                    dispatch(handleSportFilter(location, sportName))
-                  }
-                >
+                <tr key={sportName}>
                   <td>{sanitizedSportName}</td>
-                  <input type="checkbox" checked={value} />
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={value}
+                      onChange={() =>
+                        dispatch(handleSportFilter(location, sportName))
+                      }
+                    />
+                  </td>
                 </tr>
               );
             })}
