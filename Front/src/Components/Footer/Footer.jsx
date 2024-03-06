@@ -15,7 +15,7 @@ export default function Footer() {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
     if (isMobile) {
-      window.location.href = "whatsapp://send?phone=5491123456789";
+      window.location.href = `whatsapp://send?phone=${telefono}`;
     } else {
       window.open(`https://web.whatsapp.com/send?phone=${telefono}`, "_blank");
     }
