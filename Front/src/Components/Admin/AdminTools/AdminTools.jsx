@@ -4,6 +4,7 @@ import { firebaseApp } from "../../Firebase/credentials";
 import { getDocs, collection, getFirestore } from "firebase/firestore";
 import { FaArrowAltCircleDown, FaArrowAltCircleUp } from "react-icons/fa";
 import updatePrices from "../../../Utils/updatePrices";
+import load from "../../../assets/load.gif";
 import Swal from "sweetalert2";
 import styles from "./AdminTools.module.css";
 
@@ -16,6 +17,7 @@ export default function AdminTools() {
   const [action, setAction] = useState(null);
   const [percentage, setPercentage] = useState(null);
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const custom = ["5", "10", "15", "20", "Otro:"];
 
@@ -30,6 +32,7 @@ export default function AdminTools() {
   }
 
   function checkDisabled() {
+    if (isLoading) return true;
     if (!action || !percentage) return true;
     if (percentage === "Otro:" && !input) return true;
     return false;
@@ -51,11 +54,13 @@ export default function AdminTools() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
+          setIsLoading(true);
           await updatePrices(
             cardList,
             action,
             percentage !== "Otro:" ? percentage : input
           );
+          setIsLoading(false);
           Swal.fire({
             title: "Los precios se han modificado correctamente",
             // text: "Artículo creado correctamente",
@@ -66,6 +71,7 @@ export default function AdminTools() {
             }
           });
         } catch (error) {
+          setIsLoading(false);
           Swal.fire({
             title: "Error al modificar  los precios",
             // text: "Error al eliminar el artículo",
@@ -92,71 +98,85 @@ export default function AdminTools() {
   }, []);
 
   return (
-    <div className={styles.adminToolsContainer}>
-      <div className={styles.adminToolsOuter}>
-        <div className={styles.adminToolsInner}>
-          <h2 className={styles.title}>Modificar Precios</h2>
-          <section className={styles.upDownSection}>
-            <div className={styles.iconContainer}>
-              <FaArrowAltCircleUp
-                className={styles.icon}
-                style={action === "Aumentar" ? { color: "#5af35a" } : {}}
-                onClick={() => setAction("Aumentar")}
-              />
-            </div>
-            <div className={styles.iconContainer}>
-              <FaArrowAltCircleDown
-                className={styles.icon}
-                style={action === "Reducir" ? { color: "red" } : {}}
-                onClick={() => setAction("Reducir")}
-              />
-            </div>
-          </section>
-          {custom.map((elem) => (
-            <section key={elem} className={styles.selectSection}>
-              <label className={styles.label}>
-                <input
-                  type="radio"
-                  value={elem}
-                  name="customPrice"
-                  // checked={data.Price === number}
-                  onChange={() => {
-                    setPercentage(elem);
-                    if (elem !== "Otro:") setInput("");
-                  }}
+    <>
+      {isLoading ? (
+        <img src={load} alt="Loading" className={styles.loading} />
+      ) : null}
+      <div
+        className={styles.adminToolsContainer}
+        style={isLoading ? { opacity: "0.6" } : {}}
+      >
+        <div className={styles.adminToolsOuter}>
+          <div className={styles.adminToolsInner}>
+            <h2 className={styles.title}>Modificar Precios</h2>
+            <section className={styles.upDownSection}>
+              <div className={styles.iconContainer}>
+                <FaArrowAltCircleUp
+                  className={styles.icon}
+                  style={action === "Aumentar" ? { color: "#5af35a" } : {}}
+                  onClick={() => setAction("Aumentar")}
                 />
-                {elem !== "Otro:" ? `${elem}%` : elem}
-              </label>
-              {elem === "Otro:" && percentage === "Otro:" && (
-                <input
-                  id="Price"
-                  type="text"
-                  autoComplete="off"
-                  placeholder="%"
-                  value={input}
-                  className={styles.input}
-                  onChange={(event) => handleInputChange(event.target.value)}
+              </div>
+              <div className={styles.iconContainer}>
+                <FaArrowAltCircleDown
+                  className={styles.icon}
+                  style={action === "Reducir" ? { color: "red" } : {}}
+                  onClick={() => setAction("Reducir")}
                 />
-              )}
+              </div>
             </section>
-          ))}
-          <section>
-            <section className={styles.buttonSection}>
-              <button
-                className={styles.button}
-                style={checkDisabled() ? { backgroundColor: "#9a7d9a" } : {}}
-                onClick={() => handleUpload()}
-                disabled={checkDisabled()}
-              >
-                Modificar
-              </button>
-              <Link to="/admin" style={{ display: "contents" }}>
-                <button className={styles.button}>Cancelar</button>
-              </Link>
+            {custom.map((elem) => (
+              <section key={elem} className={styles.selectSection}>
+                <label className={styles.label}>
+                  <input
+                    type="radio"
+                    value={elem}
+                    name="customPrice"
+                    // checked={data.Price === number}
+                    onChange={() => {
+                      setPercentage(elem);
+                      if (elem !== "Otro:") setInput("");
+                    }}
+                  />
+                  {elem !== "Otro:" ? `${elem}%` : elem}
+                </label>
+                {elem === "Otro:" && percentage === "Otro:" && (
+                  <input
+                    id="Price"
+                    type="text"
+                    autoComplete="off"
+                    placeholder="%"
+                    value={input}
+                    className={styles.input}
+                    onChange={(event) => handleInputChange(event.target.value)}
+                  />
+                )}
+              </section>
+            ))}
+            <section>
+              <section className={styles.buttonSection}>
+                <button
+                  className={styles.button}
+                  style={checkDisabled() ? { backgroundColor: "#9a7d9a" } : {}}
+                  onClick={() => handleUpload()}
+                  disabled={checkDisabled()}
+                >
+                  Modificar
+                </button>
+                <Link to="/admin" style={{ display: "contents" }}>
+                  <button
+                    className={styles.button}
+                    style={isLoading ? { backgroundColor: "#9a7d9a" } : {}}
+                    disabled={isLoading}
+                  >
+                    Cancelar
+                  </button>
+                </Link>
+              </section>
             </section>
-          </section>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
