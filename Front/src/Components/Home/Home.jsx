@@ -10,6 +10,7 @@ import { IoMdCloudUpload } from "react-icons/io";
 import { AiFillTool } from "react-icons/ai";
 import checkIfLogged from "../../Utils/checkIfLogged";
 import Swal from "sweetalert2";
+import load from "../../assets/load.gif";
 import styles from "./Home.module.css";
 
 const firestore = getFirestore(firebaseApp);
@@ -20,10 +21,21 @@ export default function Home() {
   const [width, setWidth] = useState(window.innerWidth);
   const [cardList, setCardList] = useState([]);
   const [render, setRender] = useState(false); //Sólo sirve para forzar el re-render despues de eliminar un artículo
+  const [isLoading, setIsLoading] = useState(true);
 
   const filter = useSelector((state) =>
     location === "Home" ? state.publicFilter : state.adminFilter
   );
+
+  const atLeastOneElement = cardList?.some((card) => {
+    // Tu lógica de filtro para cada elemento
+    return (
+      filter.sports[card.data.Type] &&
+      (filter.smallest === "" ||
+        (card.data.Price >= filter.smallest &&
+          card.data.Price <= filter.largest))
+    );
+  });
 
   async function getDataFromFirestore() {
     const querySnapshot = await getDocs(collection(firestore, "Cards"));
@@ -79,7 +91,6 @@ export default function Home() {
     fetchData();
   }, [render]);
 
-
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -93,39 +104,63 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={styles.homeContainer}>
-      {location === "Not Home" && width < 1025 && (
-        <Link to="/admin/addItem" style={{ display: "contents" }}>
-          <div className={styles.uploadContainer}>
-            <IoMdCloudUpload className={styles.icon} />
-          </div>
-        </Link>
+    <>
+      {!isLoading ? null : (
+        <img
+          src={load}
+          alt="Loading"
+          style={{ margin: "auto", height: "20%" }}
+        />
       )}
+      <div
+        className={styles.homeContainer}
+        style={isLoading ? { display: "none" } : {}}
+      >
+        {location === "Not Home" && width < 1025 && (
+          <Link to="/admin/addItem" style={{ display: "contents" }}>
+            <div className={styles.uploadContainer}>
+              <IoMdCloudUpload className={styles.icon} />
+            </div>
+          </Link>
+        )}
 
-      {location === "Not Home" && width < 1025 &&(
-        <Link to="/admin/AdminTools" style={{ display: "contents" }}>
-          <div className={styles.toolContainer}>
-            <AiFillTool className={styles.icon} />
-          </div>
-        </Link>
-      )}
-      {cardList.map((card) => {
-        if (
-          filter.sports[card.data.Type] &&
-          (filter.smallest === "" ||
-            (card.data.Price >= filter.smallest &&
-              card.data.Price <= filter.largest))
-        )
-          return (
-            <section
-              key={card.data.ImgUrl}
-              className={styles.cardContainerInHome}
-            >
-              <Card parameters={card} handleDeleteCard={handleDeleteCard} />
-            </section>
-          );
-        else return null;
-      })}
-    </div>
+        {location === "Not Home" && width < 1025 && (
+          <Link to="/admin/AdminTools" style={{ display: "contents" }}>
+            <div className={styles.toolContainer}>
+              <AiFillTool className={styles.icon} />
+            </div>
+          </Link>
+        )}
+
+        {atLeastOneElement ? (
+          cardList.map((card, index) => {
+            if (
+              filter.sports[card.data.Type] &&
+              (filter.smallest === "" ||
+                (card.data.Price >= filter.smallest &&
+                  card.data.Price <= filter.largest))
+            )
+              return (
+                <section
+                  key={card.data.ImgUrl}
+                  className={styles.cardContainerInHome}
+                >
+                  <Card
+                    parameters={card}
+                    handleDeleteCard={handleDeleteCard}
+                    isLastCard={cardList.length - 1 === index}
+                    setIsLoading={setIsLoading}
+                  />
+                </section>
+              );
+            else return null;
+          })
+        ) : (
+          <span className={styles.emptyFilters}>
+            No hay elementos que coincidan con la búsqueda
+          </span>
+        )}
+      </div>
+    </>
   );
 }

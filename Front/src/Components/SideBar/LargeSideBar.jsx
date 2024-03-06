@@ -15,7 +15,7 @@ export default function LargeSideBar() {
   return (
     <div className={styles.sideBarContainer}>
       <section className={styles.filterSection}>
-        <table /* className={styles.filterContainer} */>
+        <table>
           <tbody>
             {Object.entries(filter.sports).map(([sportName, value]) => {
               const sanitizedSportName = sportName.includes("_")
@@ -28,6 +28,7 @@ export default function LargeSideBar() {
                   <td>
                     <input
                       type="checkbox"
+                      className={styles.checkBox}
                       checked={value}
                       onChange={() =>
                         dispatch(handleSportFilter(location, sportName))

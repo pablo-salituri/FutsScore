@@ -3,7 +3,12 @@ import { MdModeEdit, MdDelete } from "react-icons/md";
 import defaultImage from "../../assets/defaultImage.jpg";
 import styles from "./Card.module.css";
 
-export default function Card({ parameters, handleDeleteCard }) {
+export default function Card({
+  parameters,
+  handleDeleteCard,
+  isLastCard,
+  setIsLoading,
+}) {
   const location = useLocation().pathname;
 
   return (
@@ -20,6 +25,9 @@ export default function Card({ parameters, handleDeleteCard }) {
           className={styles.image}
           src={parameters.data.ImgUrl || defaultImage}
           alt={parameters.data.ImgUrl}
+          onLoad={() => {
+            if (isLastCard) setIsLoading(false);
+          }}
         />
         {location === "/admin" && (
           <div className={styles.deleteContainer}>

@@ -1,3 +1,14 @@
+.emptyFilters {
+    background-color: #9a349a87;
+    color: white;
+    font-size: 1.4em;
+    margin: auto;
+    text-align: center;
+    padding: 2%;
+    border-radius: 20px;
+    border: 1px solid white
+}
+
 @media (min-width: 1025px) {
     .homeContainer {
         width: 80%;
@@ -110,6 +121,11 @@
         padding: 10px;
         box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     }
+
+    .emptyFilters {
+        font-size: 1.4em;
+        padding: 4%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -164,5 +180,10 @@
         border-radius: 15px;
         padding: 10px;
         box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    }
+
+    .emptyFilters {
+        font-size: 1.4em;
+        padding: 5%;
     }
 }
