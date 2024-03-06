@@ -11,6 +11,16 @@ export default function Footer() {
     10
   )}-${telefono.slice(10, 14)}`;
 
+  const handleWhatsAppLink = () => {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    if (isMobile) {
+      window.location.href = "whatsapp://send?phone=5491123456789";
+    } else {
+      window.open(`https://web.whatsapp.com/send?phone=${telefono}`, "_blank");
+    }
+  };
+
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -27,9 +37,10 @@ export default function Footer() {
     <div className={styles.footerContainer}>
       <section className={styles.leftSection}>
         <a
-          href={`https://web.whatsapp.com/send?phone=${telefono}`}
+          onClick={handleWhatsAppLink}
+          /* href={`https://web.whatsapp.com/send?phone=${telefono}`}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer" */
           style={{
             display: "flex",
             alignItems: "center",
