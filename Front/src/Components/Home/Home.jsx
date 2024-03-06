@@ -27,6 +27,16 @@ export default function Home() {
     location === "Home" ? state.publicFilter : state.adminFilter
   );
 
+  const atLeastOneElement = cardList?.some((card) => {
+    // Tu lógica de filtro para cada elemento
+    return (
+      filter.sports[card.data.Type] &&
+      (filter.smallest === "" ||
+        (card.data.Price >= filter.smallest &&
+          card.data.Price <= filter.largest))
+    );
+  });
+
   async function getDataFromFirestore() {
     const querySnapshot = await getDocs(collection(firestore, "Cards"));
     const newData = querySnapshot.docs.map((doc) => {
@@ -121,28 +131,35 @@ export default function Home() {
             </div>
           </Link>
         )}
-        {cardList.map((card, index) => {
-          if (
-            filter.sports[card.data.Type] &&
-            (filter.smallest === "" ||
-              (card.data.Price >= filter.smallest &&
-                card.data.Price <= filter.largest))
-          )
-            return (
-              <section
-                key={card.data.ImgUrl}
-                className={styles.cardContainerInHome}
-              >
-                <Card
-                  parameters={card}
-                  handleDeleteCard={handleDeleteCard}
-                  isLastCard={cardList.length - 1 === index}
-                  setIsLoading={setIsLoading}
-                />
-              </section>
-            );
-          else return null;
-        })}
+
+        {atLeastOneElement ? (
+          cardList.map((card, index) => {
+            if (
+              filter.sports[card.data.Type] &&
+              (filter.smallest === "" ||
+                (card.data.Price >= filter.smallest &&
+                  card.data.Price <= filter.largest))
+            )
+              return (
+                <section
+                  key={card.data.ImgUrl}
+                  className={styles.cardContainerInHome}
+                >
+                  <Card
+                    parameters={card}
+                    handleDeleteCard={handleDeleteCard}
+                    isLastCard={cardList.length - 1 === index}
+                    setIsLoading={setIsLoading}
+                  />
+                </section>
+              );
+            else return null;
+          })
+        ) : (
+          <span className={styles.emptyFilters}>
+            No hay elementos que coincidan con la búsqueda
+          </span>
+        )}
       </div>
     </>
   );
