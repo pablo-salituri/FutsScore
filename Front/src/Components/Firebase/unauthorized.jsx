@@ -1,14 +1,16 @@
-import React from "react";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+/* import React from "react";
+import { useEffect } from "react"; */
+// import { useNavigate } from "react-router-dom";
+import { RiProhibitedLine } from "react-icons/ri";
 
 // import "./Unauthorized.css";
 // import robotImage from "./BrokenRobot.png";
+import styles from "./unauthorized.module.css";
 
 const Unauthorized = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
+  /* useEffect(() => {
     let seconds = 5;
 
     const timeout = setInterval(() => {
@@ -16,29 +18,25 @@ const Unauthorized = () => {
       seconds--;
 
       if (seconds < 0) {
-        // Redirige después de 3 segundos
-        // window.location.replace("/");
         navigate("/");
         clearInterval(timeout);
       }
     }, 1000);
 
     return () => clearInterval(timeout);
-  }, []);
+  }, []); */
 
   return (
-    <div className="unauthorized-container">
-      {/* <img
-        src={robotImage}
-        alt="Unauthorized robot"
-        className="unauthorized-image"
-      /> */}
-      <h2 className="unauthorized-title">
-        Oops... No estás autorizado para ingresar aquí
-      </h2>
-      <h4>
+    <div className={styles.unauthorizedContainer}>
+      <div className={styles.iconContainer}>
+        <RiProhibitedLine className={styles.icon} />
+      </div>
+      <p className={styles.unauthorized}>
+        No estás autorizado para ingresar aquí
+      </p>
+      <h3>
         Serás redirigido en <span id="countdown">5</span> segundos
-      </h4>
+      </h3>
     </div>
   );
 };
