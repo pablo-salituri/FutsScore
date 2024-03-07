@@ -208,3 +208,9 @@
         border-radius: 10px;
     }
 }
+
+@media (min-height: 800px) {
+    .price, .type {
+        font-size: 1.2em;
+    }
+}

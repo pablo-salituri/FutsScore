@@ -30,8 +30,11 @@ export default function Card({
           }}
         />
         {location === "/admin" && (
-          <div className={styles.deleteContainer}>
-            <MdDelete onClick={() => handleDeleteCard(parameters.id)} />
+          <div
+            className={styles.deleteContainer}
+            onClick={() => handleDeleteCard(parameters.id)}
+          >
+            <MdDelete />
           </div>
         )}
       </section>
