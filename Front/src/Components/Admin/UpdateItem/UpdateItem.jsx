@@ -143,9 +143,9 @@ export default function UpdateItem() {
   }
 
   return (
-    <div className={styles.addItemContainer}>
-      <div className={styles.addItemOuter}>
-        <div className={styles.addItemInner}>
+    <div className={styles.updateItemContainer}>
+      <div className={styles.updateItemOuter}>
+        <div className={styles.updateItemInner}>
           <h2 className={styles.title}>Editar Producto</h2>
           <section className={styles.dataSection}>
             {/* <span>Descripción:</span>
