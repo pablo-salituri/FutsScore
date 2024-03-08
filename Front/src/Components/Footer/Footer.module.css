@@ -19,9 +19,14 @@
         width: 33.33%;
     }
 
+    .leftSection a:hover {
+        cursor: pointer;
+    }
+
     .middleSection{
         width: 33.33%;
         text-align: center;
+        font-size: 1.4em;
     }
 
     .rightSection{

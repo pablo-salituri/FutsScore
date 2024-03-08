@@ -13,13 +13,6 @@ function App() {
 
   return (
     <div>
-      {/* {!location.pathname.includes('/admin') && (
-      <div className='superiorContainer'>
-        <NavSuperior />
-        <Nav />
-      </div>
-    )} */}
-
       {/* <div className='generalContainer'> */}
       <Routes>
         <Route path="/" element={<MainPage />} />
@@ -27,15 +20,13 @@ function App() {
 
         {/* <Route path="*" element={<UnknownRoute />} /> */}
 
-        {/* <Route element={<ProtectedRoutes />}> */}
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/addItem" element={<AddItem />} />
-        <Route path="/admin/updateItem/:id" element={<UpdateItem />} />
-        <Route path="/admin/AdminTools" element={<AdminTools />} />
-        {/* </Route> */}
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/addItem" element={<AddItem />} />
+          <Route path="/admin/updateItem/:id" element={<UpdateItem />} />
+          <Route path="/admin/AdminTools" element={<AdminTools />} />
+        </Route>
       </Routes>
-      {/* </div> */}
-      {/* {!location.pathname.includes('/admin') && <Footer />} */}
     </div>
   );
 }

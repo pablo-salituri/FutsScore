@@ -69,7 +69,13 @@ export default function Login() {
   }
 
   return (
-    <div className={styles.loginContainer}>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        handleLogin();
+      }}
+      className={styles.loginContainer}
+    >
       <section className={styles.backgroundContainer}></section>
       <section className={styles.opaqueContainer}>
         <input
@@ -121,6 +127,6 @@ export default function Login() {
           Recuperar Contraseña
         </span>
       </section>
-    </div>
+    </form>
   );
 }
