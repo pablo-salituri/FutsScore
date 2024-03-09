@@ -1,4 +1,4 @@
-import { Routes, Route /* , useLocation */ } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import MainPage from "./Components/MainPage/MainPage";
 import Login from "./Components/Login/Login";
 import Admin from "./Components/Admin/Admin";
@@ -6,14 +6,10 @@ import AddItem from "./Components/Admin/AddItem/AddItem";
 import UpdateItem from "./Components/Admin/UpdateItem/UpdateItem";
 import AdminTools from "./Components/Admin/AdminTools/AdminTools";
 import ProtectedRoutes from "./Components/Firebase/ProtectedRoutes";
-// import "./App.css";
 
 function App() {
-  // const location = useLocation();
-
   return (
     <div>
-      {/* <div className='generalContainer'> */}
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<Login />} />

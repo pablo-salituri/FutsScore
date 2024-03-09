@@ -1,16 +1,12 @@
-/* import React from "react";
-import { useEffect } from "react"; */
-// import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { RiProhibitedLine } from "react-icons/ri";
-
-// import "./Unauthorized.css";
-// import robotImage from "./BrokenRobot.png";
 import styles from "./unauthorized.module.css";
 
 const Unauthorized = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  /* useEffect(() => {
+  useEffect(() => {
     let seconds = 5;
 
     const timeout = setInterval(() => {
@@ -24,7 +20,7 @@ const Unauthorized = () => {
     }, 1000);
 
     return () => clearInterval(timeout);
-  }, []); */
+  }, []);
 
   return (
     <div className={styles.unauthorizedContainer}>

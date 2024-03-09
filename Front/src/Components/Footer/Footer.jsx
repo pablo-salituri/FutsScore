@@ -6,7 +6,7 @@ export default function Footer() {
 
   const telefono = import.meta.env.VITE_PHONE_NUMBER;
   const mail = import.meta.env.VITE_MAIL;
-  const formattedNumber = `+549 (${telefono.slice(4, 7)}) ${telefono.slice(
+  const formattedNumber = `(${telefono.slice(4, 7)}) ${telefono.slice(
     7,
     10
   )}-${telefono.slice(10, 14)}`;
