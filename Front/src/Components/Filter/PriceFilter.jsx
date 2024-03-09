@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { handlePriceFilter } from "../../Redux/actions";
 import styles from "./PriceFilter.module.css";
 
-export default function PriceFilter({ setShowDropDown }) {
+export default function PriceFilter({ setShowDropDown = () => {} }) {
   const dispatch = useDispatch();
   const location = useLocation().pathname === "/" ? "Home" : "Not Home";
 
@@ -84,6 +84,10 @@ export default function PriceFilter({ setShowDropDown }) {
           onClick={() => {
             dispatch(handlePriceFilter(location, "", ""));
             setShowDropDown(false);
+            setInputs({
+              input1: "",
+              input2: "",
+            });
           }}
           disabled={filter.smallest === ""}
         >
