@@ -1,9 +1,7 @@
-.unauthorizedContainer{
-    background-color: rgb(181 181 181 / 60%);
+.unauthorizedContainer {
+    background-color: rgba(181, 181, 181, 0.6);
     color: white;
-    width: fit-content;
-    height: fit-content;
-    padding: 3%;
+    padding: 1%;
     border-radius: 20px;
     border: 2px solid white;
     position: absolute;
@@ -14,59 +12,60 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
-
+  
 .iconContainer {
     color: red;
-    width: 40%;
-    height: 40%;
     transform: rotate(90deg);
 }
-
+  
 .icon {
     width: 100%;
     height: 100%;
 }
-
+  
 .unauthorized {
     font-size: 1.8em;
     font-weight: bold;
 }
 
+@media (min-width: 1025px) {
+    .unauthorizedContainer {
+      width: 50%;
+      height: 70%;
+    }
+
+    .iconContainer {
+        width: 35%;
+        height: 35%;
+    }
+}
+  
+@media (min-width: 769px) and (max-width: 1024px) {
+    .unauthorizedContainer {
+        width: 40%;
+        height: 70%;
+        padding: 2% 3%;
+    }
+
+    .iconContainer {
+        width: 40%;
+        height: 40%;
+    }
+}
+
 @media (max-width: 768px) {
-    .unauthorizedContainer{
-        background-color: rgb(181 181 181 / 60%);
-        color: white;
+    .unauthorizedContainer {
         width: 75%;
         height: 70%;
         padding: 3%;
-        border-radius: 20px;
-        border: 2px solid white;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
     }
-    
+
     .iconContainer {
-        color: red;
         width: 40%;
         height: 40%;
-        transform: rotate(90deg);
-    }
-    
-    .icon {
-        width: 100%;
-        height: 100%;
-    }
-    
-    .unauthorized {
-        font-size: 1.8em;
-        font-weight: bold;
     }
 }
+  
+  
