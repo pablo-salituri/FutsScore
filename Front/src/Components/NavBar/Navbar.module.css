@@ -1,6 +1,6 @@
 @media (min-width: 1025px) {
     .navBarContainer {
-        background-image: url('../../assets/Pista_Tenis.JPG');
+        background-color: rgba(0, 134, 194, 0.82);
         background-size: cover;
         background-position: center;
         height: 14%;

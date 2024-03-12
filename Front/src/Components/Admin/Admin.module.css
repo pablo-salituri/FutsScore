@@ -7,8 +7,8 @@
     }
 
     .headerBackground {
-        /* background-color: red; */
-        background-image: url('../../assets//Pista_Tenis.JPG');
+        /* background-image: url('../../assets//Pista_Tenis.JPG'); */
+        background-color: rgba(0, 134, 194, 0.72);
         width: 100%;
         height: 20%;
         position: absolute;
