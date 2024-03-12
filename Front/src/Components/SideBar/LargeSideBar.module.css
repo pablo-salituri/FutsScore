@@ -8,6 +8,7 @@
         flex-direction: column;
         justify-content: space-evenly;
         box-sizing: border-box;
+        border-top: 2px solid white;
     }
 
     .filterSection {
