@@ -85,7 +85,7 @@ export default function UpdateItem() {
   function handleSubmit() {
     //Si se cambia la imagen, se crea la propiedad miniature; por lo que se hace el recambio de card
     if (cardInfo.data.miniature) {
-      console.log("con cambio de foto");
+      // console.log("con cambio de foto");
       uploadCard("edicion", cardInfo.data);
       deleteImage(originalInfo.id);
       deleteRecordFS(originalInfo.id);
@@ -93,7 +93,7 @@ export default function UpdateItem() {
 
     // Si no se cambia la imagen, se hace el update de la card
     else {
-      console.log("sin cambio de foto");
+      // console.log("sin cambio de foto");
       const changes = [];
       /* if (originalInfo.Description !== cardInfo.Description)
         changes.push("Description"); */
@@ -114,16 +114,6 @@ export default function UpdateItem() {
       }
     });
   }
-
-  /* const handleUpload = async () => {
-
-    try {
-      await uploadCard("carga", cardInfo);
-      navigate("/admin");
-    } catch (error) {
-      console.error(error);
-    }
-  }; */
 
   useEffect(() => {
     async function getData(uid) {
@@ -168,7 +158,6 @@ export default function UpdateItem() {
                 defaultValue={cardInfo.data && cardInfo.data.Type}
                 className={styles.select}
                 onChange={(event) => {
-                  // setCardInfo({ ...cardInfo, Type: event.target.value });
                   setCardInfo({
                     ...cardInfo,
                     data: { ...cardInfo.data, Type: event.target.value },

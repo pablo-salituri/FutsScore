@@ -119,7 +119,13 @@ export default function Login() {
         >
           <MdLogin className={styles.icon} /> Acceder
         </button>
-        <button className={styles.button} onClick={() => navigate(-1)}>
+        <button
+          className={styles.button}
+          onClick={(event) => {
+            event.preventDefault();
+            navigate(-1);
+          }}
+        >
           <FaArrowCircleLeft className={styles.icon} /> Volver
         </button>
 

@@ -54,7 +54,6 @@ export default function AddItem() {
   };
 
   const handleUpload = async () => {
-    console.log("hola");
     try {
       await uploadCard("carga", data);
 
