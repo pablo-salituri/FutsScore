@@ -8,7 +8,7 @@ import deleteRecordFS from "../../Utils/deleteRecordFS";
 import deleteImage from "../../Utils/deleteImage";
 import { IoMdCloudUpload } from "react-icons/io";
 import { AiFillTool } from "react-icons/ai";
-import checkIfLogged from "../../Utils/checkIfLogged";
+// import checkIfLogged from "../../Utils/checkIfLogged";
 import Swal from "sweetalert2";
 import load from "../../assets/load.gif";
 import styles from "./Home.module.css";
@@ -28,7 +28,6 @@ export default function Home() {
   );
 
   const atLeastOneElement = cardList?.some((card) => {
-    // Tu lógica de filtro para cada elemento
     return (
       filter.sports[card.data.Type] &&
       (filter.smallest === "" ||
@@ -84,11 +83,11 @@ export default function Home() {
   useEffect(() => {
     getDataFromFirestore();
 
-    async function fetchData() {
+    /* async function fetchData() {
       const answer = await checkIfLogged();
       console.log(answer);
     }
-    fetchData();
+    fetchData(); */
   }, [render]);
 
   useEffect(() => {
