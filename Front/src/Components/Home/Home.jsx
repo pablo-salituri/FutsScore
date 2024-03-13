@@ -61,9 +61,9 @@ export default function Home() {
     }).then((result) => {
       if (result.isConfirmed) {
         try {
-          deleteImage(uid);
-          deleteRecordFS(uid);
-          setRender(!render);
+          deleteImage(uid).then(() =>
+            deleteRecordFS(uid).then(() => setRender(!render))
+          );
           Swal.fire({
             title: "Artículo eliminado correctamente",
             // text: "Artículo eliminado correctamente",
